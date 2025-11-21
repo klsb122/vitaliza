@@ -1,4 +1,5 @@
 import { FaCheck } from 'react-icons/fa';
+import novaFase from '../assets/nova_fase.jpg';
 
 const About = () => {
   return (
@@ -6,7 +7,7 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-16 items-center">
         <div className="order-2 md:order-1">
           <img 
-            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+            src={novaFase} 
             alt="Psicóloga sorrindo" 
             className="rounded-xl shadow-lg w-full"
           />
