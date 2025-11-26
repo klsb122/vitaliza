@@ -1,5 +1,5 @@
 import { FaCheck } from 'react-icons/fa';
-import novaFase from '../assets/nova_fase.jpg';
+import novaFase from '../assets/nova_fase.webp';
 
 const About = () => {
   return (

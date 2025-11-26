@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import logo from '../assets/logo-solo.png';
+import logo from '../assets/logo-solo.webp';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +30,7 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8">
           <li><a href="#home" className="text-text hover:text-secondary font-medium transition-colors">Início</a></li>
           <li><a href="#sobre" className="text-text hover:text-secondary font-medium transition-colors">Sobre</a></li>
+          <li><a href="#equipe" className="text-text hover:text-secondary font-medium transition-colors">Equipe</a></li>
           <li><a href="#servicos" className="text-text hover:text-secondary font-medium transition-colors">Serviços</a></li>
           <li><a href="#contato" className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-accent transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">Agendar Consulta</a></li>
         </ul>
@@ -47,6 +48,7 @@ const Navbar = () => {
       <div className={`md:hidden fixed top-0 right-0 w-[70%] h-screen bg-white shadow-2xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} flex flex-col justify-center items-center gap-8 z-40`}>
         <a href="#home" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Início</a>
         <a href="#sobre" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Sobre</a>
+        <a href="#equipe" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Equipe</a>
         <a href="#servicos" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Serviços</a>
         <a href="#contato" onClick={() => setIsOpen(false)} className="bg-primary text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-accent">Agendar Consulta</a>
       </div>

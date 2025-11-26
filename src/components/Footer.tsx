@@ -1,4 +1,4 @@
-import logoSolo from '../assets/logo-solo.png';
+import logoSolo from '../assets/logo-solo.webp';
 
 const Footer = () => {
   return (

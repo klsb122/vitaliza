@@ -1,4 +1,4 @@
-import equipe from '../assets/equipe.png';
+import equipe from '../assets/equipe.webp';
 
 const Hero = () => {
   return (
