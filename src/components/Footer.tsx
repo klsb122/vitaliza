@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-white/10 text-sm text-gray-500">
-          <p>&copy; 2024 Clínica Vitaliza. Todos os direitos reservados.</p>
+          <p>&copy; 2025 Kextech. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
