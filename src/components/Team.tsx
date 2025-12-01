@@ -5,84 +5,108 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import anaSilva from '../assets/team/ana-silva.webp';
-import carlosMendes from '../assets/team/carlos-mendes.webp';
-import marinaCosta from '../assets/team/mariana-costa.webp';
-import robertoAlves from '../assets/team/roberto-alves.webp';
+import samara from '../assets/team/samara.webp';
+import rhuana from '../assets/team/rhuana.webp';
+import mircia from '../assets/team/mircia.webp';
+import anna from '../assets/team/anna.webp';
+import anne from '../assets/team/anne.webp';
+import hercules from '../assets/team/hercules.webp';
+import isabella from '../assets/team/isabella.webp';
+import lais from '../assets/team/lais.webp';
+import lorena from '../assets/team/lorena.webp';
+import rhania from '../assets/team/rhania.webp';
 
 const Team = () => {
   const teamMembers = [
     {
-      name: "Dra. Ana Paula Silva",
+      name: "Dra. Samara",
       crp: "CRP 06/123456",
       specialty: "Psicologia Clínica",
       approaches: ["Terapia Cognitivo-Comportamental", "Mindfulness"],
       bio: "Especialista em ansiedade e transtornos de humor com mais de 10 anos de experiência.",
-      image: anaSilva,
-      email: "ana.silva@vitaliza.com.br"
+      image: samara,
+      email: "samara@vitaliza.com.br"
     },
     {
-      name: "Dr. Carlos Mendes",
+      name: "Dra. Rhuana",
       crp: "CRP 06/234567",
       specialty: "Psicologia Infantil",
       approaches: ["Ludoterapia", "Terapia Familiar"],
-      bio: "Dedicado ao desenvolvimento emocional infantil e orientação parental.",
-      image: carlosMendes,
-      email: "carlos.mendes@vitaliza.com.br"
+      bio: "Dedicada ao desenvolvimento emocional infantil e orientação parental.",
+      image: rhuana,
+      email: "rhuana@vitaliza.com.br"
     },
     {
-      name: "Dra. Mariana Costa",
+      name: "Dra. Mircia",
       crp: "CRP 06/345678",
       specialty: "Terapia de Casal",
       approaches: ["Terapia Sistêmica", "Comunicação Não-Violenta"],
       bio: "Especialista em relacionamentos e dinâmicas familiares há 8 anos.",
-      image: marinaCosta,
-      email: "mariana.costa@vitaliza.com.br"
+      image: mircia,
+      email: "mircia@vitaliza.com.br"
     },
     {
-      name: "Dr. Roberto Alves",
+      name: "Dra. Anna",
       crp: "CRP 06/456789",
       specialty: "Orientação Vocacional",
       approaches: ["Análise Comportamental", "Coaching de Carreira"],
       bio: "Auxilia jovens e adultos em transições de carreira e autoconhecimento profissional.",
-      image: robertoAlves,
-      email: "roberto.alves@vitaliza.com.br"
+      image: anna,
+      email: "anna@vitaliza.com.br"
     },
     {
-      name: "Dra. Juliana Ferreira",
+      name: "Dra. Anne",
       crp: "CRP 06/567890",
       specialty: "Psicologia Hospitalar",
       approaches: ["Psico-oncologia", "Cuidados Paliativos"],
       bio: "Experiência em suporte emocional a pacientes e familiares em ambiente hospitalar.",
-      image: anaSilva,
-      email: "juliana.ferreira@vitaliza.com.br"
+      image: anne,
+      email: "anne@vitaliza.com.br"
     },
     {
-      name: "Dr. Ricardo Oliveira",
+      name: "Dr. Hercules",
       crp: "CRP 06/678901",
       specialty: "Neuropsicologia",
       approaches: ["Reabilitação Cognitiva", "Avaliação Neuropsicológica"],
       bio: "Especialista em avaliação e reabilitação de funções cognitivas.",
-      image: carlosMendes,
-      email: "ricardo.oliveira@vitaliza.com.br"
+      image: hercules,
+      email: "hercules@vitaliza.com.br"
     },
     {
-      name: "Dra. Fernanda Lima",
+      name: "Dra. Isabella",
       crp: "CRP 06/789012",
       specialty: "Psicanálise",
       approaches: ["Freudiana", "Lacaniana"],
       bio: "Atendimento clínico com ênfase na escuta do inconsciente e análise dos sonhos.",
-      image: marinaCosta,
-      email: "fernanda.lima@vitaliza.com.br"
+      image: isabella,
+      email: "isabella@vitaliza.com.br"
     },
     {
-      name: "Dr. Eduardo Santos",
+      name: "Dra. Lais",
       crp: "CRP 06/890123",
       specialty: "Psicologia do Esporte",
       approaches: ["Treinamento Mental", "Biofeedback"],
-      bio: "Focado em otimizar a performance e o bem-estar de atletas de alto rendimento.",
-      image: robertoAlves,
-      email: "eduardo.santos@vitaliza.com.br"
+      bio: "Focada em otimizar a performance e o bem-estar de atletas de alto rendimento.",
+      image: lais,
+      email: "lais@vitaliza.com.br"
+    },
+    {
+      name: "Dra. Lorena",
+      crp: "CRP 06/901234",
+      specialty: "Psicologia Perinatal",
+      approaches: ["Acompanhamento Gestacional", "Puerpério"],
+      bio: "Apoio psicológico durante a gravidez e pós-parto, fortalecendo o vínculo mãe-bebê.",
+      image: lorena,
+      email: "lorena@vitaliza.com.br"
+    },
+    {
+      name: "Dra. Rhania",
+      crp: "CRP 06/012345",
+      specialty: "Terapia Sexual",
+      approaches: ["Terapia Sexual", "Educação Sexual"],
+      bio: "Atendimento especializado em questões de sexualidade e intimidade.",
+      image: rhania,
+      email: "rhania@vitaliza.com.br"
     }
   ];
 
