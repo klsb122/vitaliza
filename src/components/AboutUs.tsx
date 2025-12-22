@@ -1,5 +1,5 @@
 import { FaHeart, FaUsers, FaLeaf, FaStar, FaCheck } from 'react-icons/fa';
-import novaFase from '../assets/equipe2.jpeg';
+import novaFase from '../assets/fundadoras.jpeg';
 
 const AboutUs = () => {
   const highlights = [
@@ -81,11 +81,11 @@ const AboutUs = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Imagem */}
           <div className="order-2 lg:order-1">
-            <div className="relative">
+            <div className="relative max-w-lg mx-auto">
               <img 
                 src={novaFase} 
                 alt="Equipe Vitaliza" 
-                className="rounded-2xl shadow-2xl w-full"
+                className="rounded-2xl shadow-2xl w-full object-cover"
               />
               {/* Decorative frame */}
               <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-secondary/30 rounded-2xl -z-10"></div>
