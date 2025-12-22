@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
-import equipe from '../assets/equipe.jpg';
+import equipe from '../assets/equipe.webp';
 
 const Hero = () => {
   const ref = useRef(null);
