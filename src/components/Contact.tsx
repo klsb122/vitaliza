@@ -1,6 +1,55 @@
+import { useState } from 'react';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaWhatsapp, FaClock } from 'react-icons/fa';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+
+  const serviceLabels: { [key: string]: string } = {
+    individual: 'Terapia Individual',
+    casal: 'Terapia de Casal',
+    infantil: 'Terapia Infantil',
+    orientacao: 'Orientação Vocacional',
+    outro: 'Outro'
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Monta a mensagem formatada para o WhatsApp
+    let whatsappMessage = `Olá! Gostaria de agendar uma consulta na Vitaliza.\n\n`;
+    whatsappMessage += `*Nome:* ${formData.name}\n`;
+    whatsappMessage += `*WhatsApp:* ${formData.phone}\n`;
+    
+    if (formData.email) {
+      whatsappMessage += `*E-mail:* ${formData.email}\n`;
+    }
+    
+    if (formData.service) {
+      whatsappMessage += `*Tipo de Atendimento:* ${serviceLabels[formData.service] || formData.service}\n`;
+    }
+    
+    if (formData.message) {
+      whatsappMessage += `\n*Mensagem:*\n${formData.message}`;
+    }
+
+    // Codifica a mensagem para URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Abre o WhatsApp com a mensagem pronta
+    window.open(`https://wa.me/5577999303592?text=${encodedMessage}`, '_blank');
+  };
+
   const contactInfo = [
     {
       icon: <FaWhatsapp />,
@@ -133,7 +182,7 @@ const Contact = () => {
               <h3 className="text-2xl font-serif text-primary mb-2">Envie uma Mensagem</h3>
               <p className="text-light-text text-sm mb-8">Preencha o formulário abaixo e retornaremos em breve.</p>
               
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="name" className="block text-primary text-sm font-medium mb-2">
@@ -142,6 +191,8 @@ const Contact = () => {
                     <input 
                       type="text" 
                       id="name" 
+                      value={formData.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-[#FAF9F6] border border-transparent rounded-xl focus:outline-none focus:border-secondary focus:bg-white focus:ring-2 focus:ring-[#8FBC8F]/20 transition-all" 
                       placeholder="Seu nome completo" 
                       required 
@@ -154,6 +205,8 @@ const Contact = () => {
                     <input 
                       type="tel" 
                       id="phone" 
+                      value={formData.phone}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-[#FAF9F6] border border-transparent rounded-xl focus:outline-none focus:border-secondary focus:bg-white focus:ring-2 focus:ring-[#8FBC8F]/20 transition-all" 
                       placeholder="(00) 00000-0000" 
                       required
@@ -168,6 +221,8 @@ const Contact = () => {
                   <input 
                     type="email" 
                     id="email" 
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#FAF9F6] border border-transparent rounded-xl focus:outline-none focus:border-secondary focus:bg-white focus:ring-2 focus:ring-[#8FBC8F]/20 transition-all" 
                     placeholder="seu@email.com" 
                   />
@@ -178,7 +233,9 @@ const Contact = () => {
                     Tipo de Atendimento
                   </label>
                   <select 
-                    id="service" 
+                    id="service"
+                    value={formData.service}
+                    onChange={handleChange} 
                     className="w-full px-4 py-3 bg-[#FAF9F6] border border-transparent rounded-xl focus:outline-none focus:border-secondary focus:bg-white focus:ring-2 focus:ring-[#8FBC8F]/20 transition-all text-text"
                   >
                     <option value="">Selecione uma opção</option>
@@ -197,27 +254,21 @@ const Contact = () => {
                   <textarea 
                     id="message" 
                     rows={4} 
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#FAF9F6] border border-transparent rounded-xl focus:outline-none focus:border-secondary focus:bg-white focus:ring-2 focus:ring-[#8FBC8F]/20 transition-all resize-none" 
                     placeholder="Conte um pouco sobre o que você busca..."
                   ></textarea>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                <div className="pt-2">
                   <button 
                     type="submit" 
-                    className="flex-1 bg-primary text-white py-4 rounded-xl font-medium hover:bg-accent transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                  >
-                    Enviar Mensagem
-                  </button>
-                  <a 
-                    href="https://wa.me/5577999303592?text=Olá! Gostaria de agendar uma consulta na Vitaliza."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 bg-[#25D366] text-white py-4 rounded-xl font-medium hover:bg-[#20bd5a] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-center flex items-center justify-center gap-2"
+                    className="w-full bg-[#25D366] text-white py-4 rounded-xl font-medium hover:bg-[#20bd5a] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2"
                   >
                     <FaWhatsapp className="text-lg" />
-                    WhatsApp Direto
-                  </a>
+                    Enviar pelo WhatsApp
+                  </button>
                 </div>
 
                 <p className="text-xs text-light-text text-center pt-2">
