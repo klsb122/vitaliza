@@ -1,5 +1,5 @@
 import { FaHeart, FaUsers, FaLeaf, FaStar, FaCheck } from 'react-icons/fa';
-import novaFase from '../assets/fundadoras.jpeg';
+import novaFase from '../assets/fundadoras.webp';
 import ScrollAnimation from './ScrollAnimation';
 
 const AboutUs = () => {
