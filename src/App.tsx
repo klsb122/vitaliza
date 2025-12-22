@@ -2,8 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 
 import Features from './components/Features';
-import About from './components/About';
-import History from './components/History';
+import AboutUs from './components/AboutUs';
 import Team from './components/Team';
 import Services from './components/Services';
 import Cta from './components/Cta';
@@ -16,8 +15,7 @@ function App() {
       <Navbar />
       <Hero />
       <Features />
-      <About />
-      <History />
+      <AboutUs />
       <Team />
       <Services />
       <Cta />
