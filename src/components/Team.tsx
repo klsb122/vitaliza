@@ -6,45 +6,82 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ScrollAnimation from './ScrollAnimation';
 
-import samara from '../assets/team/samara.webp';
+import samara from '../assets/team-new/samara.webp';
 import rhuana from '../assets/team/rhuana.webp';
-import mircia from '../assets/team/mircia.webp';
+import mircia from '../assets/team-new/mircia.webp';
 import anna from '../assets/team/anna.webp';
-import anne from '../assets/team/anne.webp';
-import hercules from '../assets/team/hercules.webp';
+import anne from '../assets/team-new/anne.webp';
+import hercules from '../assets/team-new/hercules.webp';
 import isabella from '../assets/team/isabella.webp';
 import lais from '../assets/team/lais.webp';
-import lorena from '../assets/team/lorena.webp';
-import rhania from '../assets/team/rhania.webp';
+import lorena from '../assets/team-new/lorena.webp';
+import rhania from '../assets/team-new/rhania.webp';
+import tamires from '../assets/team-new/tamires.webp';
 
 const Team = () => {
   const teamMembers = [
     {
-      name: "Dra. Samara",
-      crp: "CRP 06/123456",
-      specialty: "Psicologia Clínica",
-      approaches: ["Terapia Cognitivo-Comportamental", "Mindfulness"],
-      bio: "Especialista em ansiedade e transtornos de humor com mais de 10 anos de experiência.",
+      name: "Samara D. Dal-Lago",
+      crp: "CRP 03/19724",
+      specialty: "Psicóloga Clínica",
+      approaches: ["Terapia Cognitivo-Comportamental", "Terapia do Esquema Cognitivo", "Relacionamento e Sexualidade", "Psicologia Jurídica", "Inteligência Criminal"],
+      bio: "Atua auxiliando indivíduos a compreenderem seus padrões emocionais, cognitivos e comportamentais, promovendo mudanças significativas e duradouras. Atendimento on-line e presencial para adolescentes a partir de 16 anos e adultos.",
       image: samara,
       email: "samara@vitaliza.com.br"
     },
     {
-      name: "Dra. Rhuana",
-      crp: "CRP 06/234567",
-      specialty: "Psicologia Infantil",
-      approaches: ["Ludoterapia", "Terapia Familiar"],
-      bio: "Dedicada ao desenvolvimento emocional infantil e orientação parental.",
-      image: rhuana,
-      email: "rhuana@vitaliza.com.br"
+      name: "Rhania Menezes",
+      crp: "CRP 03/30272",
+      specialty: "Psicóloga Clínica",
+      approaches: ["Terapia Cognitivo-Comportamental", "Psicopatologia", "Psicoterapias Baseadas em Evidências"],
+      bio: "Atua com foco na mudança de processos cognitivos, emocionais e comportamentais. Especializada em avaliação diagnóstica de transtornos mentais. Atendimentos on-line e presenciais para adolescentes e adultos.",
+      image: rhania,
+      email: "rhania@vitaliza.com.br"
     },
     {
-      name: "Dra. Mircia",
-      crp: "CRP 06/345678",
-      specialty: "Terapia de Casal",
-      approaches: ["Terapia Sistêmica", "Comunicação Não-Violenta"],
-      bio: "Especialista em relacionamentos e dinâmicas familiares há 8 anos.",
+      name: "Dr. Hercules Hideki Makio",
+      crp: "CRM-BA 44523 / RQE 25294",
+      specialty: "Médico Psiquiatra",
+      approaches: ["Terapia Cognitivo-Comportamental", "Psiquiatria Clínica"],
+      bio: "Graduado pela UFMS com residência em psiquiatria. Atendimentos presenciais e online a partir de 6 anos. Valoriza o vínculo, a escuta e a empatia como princípios fundamentais, promovendo bem-estar e qualidade de vida.",
+      image: hercules,
+      email: "hercules@vitaliza.com.br"
+    },
+    {
+      name: "Lorena dos Reis Dias Lermen",
+      crp: "CRP 03/5848",
+      specialty: "Psicóloga",
+      approaches: ["Gestalt-terapia", "Perdas e Luto", "Psicologia da Saúde e Hospitalar", "Psicologia do Trânsito"],
+      bio: "Formada pela Universidade Católica de Goiás. Credenciada junto à Polícia Federal. Atende adultos e idosos, presencial e on-line. Realiza avaliação psicológica (porte/posse de arma, pré-cirúrgica, vocacional, admissional e do trabalho).",
+      image: lorena,
+      email: "lorena@vitaliza.com.br"
+    },
+    {
+      name: "Anne Caroline Farias",
+      crp: "CRP 03/30554",
+      specialty: "Psicóloga Clínica",
+      approaches: ["Terapia Cognitivo-Comportamental", "Terapia do Esquema", "Neurociência do Comportamento Humano"],
+      bio: "Atua com foco no desenvolvimento de relações seguras e saudáveis, compreendendo as necessidades emocionais do indivíduo. Atendimento online e presencial para adolescentes e adultos, individual e casal.",
+      image: anne,
+      email: "anne@vitaliza.com.br"
+    },
+    {
+      name: "Mírcia Dantas de Sá Carneiro",
+      crp: "CRP 03/29228",
+      specialty: "Psicóloga Clínica",
+      approaches: ["Psicologia Analítica", "Terapia Sistêmica", "Terapia EMDR", "Terapia Brainspotting"],
+      bio: "Especializada em Terapia de Família e Casal. Auxilia pacientes a processar experiências traumáticas e memórias dolorosas. Atendimentos online e presencial para adultos, idosos, família, casal e grupos. Oferece Consultoria Empresarial e implementação da NR-1.",
       image: mircia,
       email: "mircia@vitaliza.com.br"
+    },
+    {
+      name: "Tamires Carvalho",
+      crp: "CRP 03/26522",
+      specialty: "Psicóloga e Neuropsicóloga",
+      approaches: ["Terapia Cognitivo-Comportamental", "Neuropsicologia", "Avaliação Neuropsicológica"],
+      bio: "Atua em avaliações neuropsicológicas e psicoterapia. Atendimentos exclusivamente presenciais para crianças a partir de 3 anos, adolescentes, adultos e idosos. Foco em funções cognitivas como atenção, memória, linguagem, aprendizagem e regulação emocional.",
+      image: tamires,
+      email: "tamires@vitaliza.com.br"
     },
     {
       name: "Dra. Anna",
@@ -56,22 +93,13 @@ const Team = () => {
       email: "anna@vitaliza.com.br"
     },
     {
-      name: "Dra. Anne",
-      crp: "CRP 06/567890",
-      specialty: "Psicologia Hospitalar",
-      approaches: ["Psico-oncologia", "Cuidados Paliativos"],
-      bio: "Experiência em suporte emocional a pacientes e familiares em ambiente hospitalar.",
-      image: anne,
-      email: "anne@vitaliza.com.br"
-    },
-    {
-      name: "Dr. Hercules",
-      crp: "CRP 06/678901",
-      specialty: "Neuropsicologia",
-      approaches: ["Reabilitação Cognitiva", "Avaliação Neuropsicológica"],
-      bio: "Especialista em avaliação e reabilitação de funções cognitivas.",
-      image: hercules,
-      email: "hercules@vitaliza.com.br"
+      name: "Dra. Rhuana",
+      crp: "CRP 06/234567",
+      specialty: "Psicologia Infantil",
+      approaches: ["Ludoterapia", "Terapia Familiar"],
+      bio: "Dedicada ao desenvolvimento emocional infantil e orientação parental.",
+      image: rhuana,
+      email: "rhuana@vitaliza.com.br"
     },
     {
       name: "Dra. Isabella",
@@ -90,24 +118,6 @@ const Team = () => {
       bio: "Focada em otimizar a performance e o bem-estar de atletas de alto rendimento.",
       image: lais,
       email: "lais@vitaliza.com.br"
-    },
-    {
-      name: "Dra. Lorena",
-      crp: "CRP 06/901234",
-      specialty: "Psicologia Perinatal",
-      approaches: ["Acompanhamento Gestacional", "Puerpério"],
-      bio: "Apoio psicológico durante a gravidez e pós-parto, fortalecendo o vínculo mãe-bebê.",
-      image: lorena,
-      email: "lorena@vitaliza.com.br"
-    },
-    {
-      name: "Dra. Rhania",
-      crp: "CRP 06/012345",
-      specialty: "Terapia Sexual",
-      approaches: ["Terapia Sexual", "Educação Sexual"],
-      bio: "Atendimento especializado em questões de sexualidade e intimidade.",
-      image: rhania,
-      email: "rhania@vitaliza.com.br"
     }
   ];
 
