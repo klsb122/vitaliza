@@ -1,22 +1,45 @@
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FaChevronDown } from 'react-icons/fa';
 import equipe from '../assets/equipe.jpg';
 
 const Hero = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const replaceOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <>
-      {/* Desktop: Layout original com background full */}
+      {/* Desktop: Layout original com background full e Parallax */}
       <section 
         id="home" 
-        className="relative min-h-screen hidden md:flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${equipe})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        className="relative min-h-screen hidden md:flex items-center justify-center overflow-hidden"
+        ref={ref}
       >
-        <div className="absolute inset-0 bg-black/50" />
+        <motion.div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${equipe})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            y
+          }}
+        />
+        <div className="absolute inset-0 bg-black/50 z-0" />
         
         <div className="container mx-auto px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto animate-fade-in">
+          <motion.div 
+            className="text-center max-w-3xl mx-auto"
+            style={{ opacity: replaceOpacity }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
             <h1 className="text-6xl font-serif text-white mb-6 leading-tight drop-shadow-lg">
               Redescubra o seu <span className="text-secondary italic">equilíbrio</span> interior
             </h1>
@@ -31,8 +54,21 @@ const Hero = () => {
                 Saiba Mais
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white cursor-pointer"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          onClick={() => {
+            const element = document.getElementById('sobre');
+            element?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <FaChevronDown className="text-3xl opacity-80 hover:opacity-100 transition-opacity" />
+        </motion.div>
       </section>
 
       {/* Mobile: Layout empilhado com foto integrada */}
@@ -42,7 +78,12 @@ const Hero = () => {
       >
         {/* Conteúdo de texto */}
         <div className="flex-1 flex flex-col justify-center px-6 pt-24 pb-8">
-          <div className="text-center max-w-md mx-auto animate-fade-in">
+          <motion.div 
+            className="text-center max-w-md mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <h1 className="text-3xl sm:text-4xl font-serif text-text mb-4 leading-snug">
               Redescubra o seu <span className="text-secondary italic">equilíbrio</span> interior
             </h1>
@@ -57,11 +98,16 @@ const Hero = () => {
                 Saiba Mais
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Foto da equipe com fade integrado */}
-        <div className="relative w-full flex-shrink-0">
+        {/* Foto da equipe com fade integrado e leve animação */}
+        <motion.div 
+          className="relative w-full flex-shrink-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
           {/* Gradiente superior para integrar ao fundo */}
           <div 
             className="absolute top-0 left-0 right-0 h-16 z-10 pointer-events-none"
@@ -93,7 +139,7 @@ const Hero = () => {
               background: 'radial-gradient(ellipse at center bottom, transparent 30%, rgba(250, 249, 246, 0.3) 100%)'
             }}
           />
-        </div>
+        </motion.div>
       </section>
     </>
   );

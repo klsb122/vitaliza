@@ -1,5 +1,6 @@
 import { FaArrowRight } from 'react-icons/fa';
 import { TbSofa, TbPill, TbMoodKid, TbBrain, TbClipboardList, TbSpeakerphone, TbUsers } from 'react-icons/tb';
+import ScrollAnimation from './ScrollAnimation';
 
 const Services = () => {
   const services = [
@@ -43,25 +44,34 @@ const Services = () => {
   return (
     <section id="servicos" className="py-24 bg-[#F0F7F4]">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center mb-16">
-          <span className="block text-sm font-bold tracking-widest text-secondary uppercase mb-2">Nossos Serviços</span>
-          <h2 className="text-4xl font-serif text-primary">Como podemos ajudar</h2>
-        </div>
+        <ScrollAnimation direction="up">
+          <div className="text-center mb-16">
+            <span className="block text-sm font-bold tracking-widest text-secondary uppercase mb-2">Nossos Serviços</span>
+            <h2 className="text-4xl font-serif text-primary">Como podemos ajudar</h2>
+          </div>
+        </ScrollAnimation>
         
         <div className="flex flex-wrap justify-center gap-6">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 border-b-4 border-transparent hover:border-secondary group w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
-                <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-secondary/20 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                  <IconComponent className="text-2xl text-primary" />
+              <ScrollAnimation 
+                key={index} 
+                direction="up" 
+                delay={index * 0.1}
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
+              >
+                <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 border-b-4 border-transparent hover:border-secondary group h-full">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-secondary/20 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="text-2xl text-primary" />
+                  </div>
+                  <h3 className="text-xl font-serif text-primary mb-3">{service.title}</h3>
+                  <p className="text-light-text text-sm leading-relaxed mb-5">{service.description}</p>
+                  <a href="#contato" className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
+                    Saiba mais <FaArrowRight className="text-xs" />
+                  </a>
                 </div>
-                <h3 className="text-xl font-serif text-primary mb-3">{service.title}</h3>
-                <p className="text-light-text text-sm leading-relaxed mb-5">{service.description}</p>
-                <a href="#contato" className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                  Saiba mais <FaArrowRight className="text-xs" />
-                </a>
-              </div>
+              </ScrollAnimation>
             );
           })}
         </div>
