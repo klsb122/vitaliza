@@ -24,7 +24,7 @@ const Contact = () => {
     {
       icon: <FaClock />,
       title: "Horário",
-      value: "Seg - Sex: 8h às 18h"
+      value: "Seg - Sex: 8h às 20h | Sáb: 8h às 12h"
     }
   ];
 
