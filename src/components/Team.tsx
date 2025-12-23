@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
@@ -12,11 +13,103 @@ import mircia from '../assets/team-new/mircia.webp';
 import anna from '../assets/team-new/anna.webp';
 import anne from '../assets/team-new/anne.webp';
 import hercules from '../assets/team-new/hercules.webp';
-import isabella from '../assets/team/isabella.webp';
 import lais from '../assets/team/lais.webp';
 import lorena from '../assets/team-new/lorena.webp';
 import rhania from '../assets/team-new/rhania.webp';
 import tamires from '../assets/team-new/tamires.webp';
+
+const MAX_BIO_LENGTH = 150;
+
+interface TeamMember {
+  name: string;
+  crp: string;
+  specialty: string;
+  approaches: string[];
+  bio: string;
+  image: string;
+  email: string;
+  imagePosition?: string;
+}
+
+const TeamCard = ({ member }: { member: TeamMember }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const shouldTruncate = member.bio.length > MAX_BIO_LENGTH;
+  
+  const displayBio = shouldTruncate && !isExpanded 
+    ? member.bio.slice(0, MAX_BIO_LENGTH) + '...'
+    : member.bio;
+
+  return (
+    <div 
+      className="bg-[#FAF9F6] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col"
+    >
+      {/* Imagem do Profissional */}
+      <div className="relative h-80 bg-gradient-to-br from-[#8FBC8F]/20 to-[#2F4F4F]/20 overflow-hidden shrink-0">
+        <img 
+          src={member.image} 
+          alt={member.name}
+          className="w-full h-full object-cover"
+          style={{ objectPosition: member.imagePosition || 'center' }}
+        />
+        {/* Overlay com efeito hover */}
+        <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
+      </div>
+      
+      {/* Informações do Profissional */}
+      <div className="p-6 flex-1 flex flex-col">
+        <h3 className="text-xl font-serif text-primary mb-1">{member.name}</h3>
+        <p className="text-sm text-secondary font-medium mb-3">{member.crp}</p>
+        
+        <div className="mb-4">
+          <p className="text-sm font-bold text-text mb-2">{member.specialty}</p>
+          <p className="text-sm text-light-text leading-relaxed">
+            {displayBio}
+            {shouldTruncate && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="ml-1 text-secondary font-medium hover:text-primary transition-colors"
+              >
+                {isExpanded ? 'Ver menos' : 'Ver mais'}
+              </button>
+            )}
+          </p>
+        </div>
+        
+        {/* Abordagens */}
+        <div className="mb-4">
+          <p className="text-xs font-bold text-text mb-2">Abordagens:</p>
+          <div className="flex flex-wrap gap-2">
+            {member.approaches.map((approach, idx) => (
+              <span 
+                key={idx} 
+                className="text-xs bg-white px-3 py-1 rounded-full text-primary border border-[#8FBC8F]/30"
+              >
+                {approach}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        {/* Ações */}
+        <div className="flex gap-3 pt-4 border-t border-gray-200 mt-auto">
+          <a 
+            href={`mailto:${member.email}`}
+            className="flex-1 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent transition-all text-center flex items-center justify-center gap-2"
+          >
+            <FaEnvelope className="text-xs" />
+            Contato
+          </a>
+          <a 
+            href="#contato"
+            className="flex-1 border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-all text-center"
+          >
+            Agendar
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Team = () => {
   const teamMembers = [
@@ -99,7 +192,8 @@ const Team = () => {
       approaches: ["Psicologia Humanista", "Psicologia Existencial", "Terapia Sistêmica de Casal", "Terapia Individual"],
       bio: "Atua na abordagem humanista e existencial, com formação em terapia sistêmica de casal e individual. Realiza atendimento on-line e presencial para adultos e adolescentes a partir de 13 anos, com objetivo de acolher e construir juntos uma trajetória de bem-estar e autoconhecimento.",
       image: rhuana,
-      email: "rhuana@vitaliza.com.br"
+      email: "rhuana@vitaliza.com.br",
+      imagePosition: "top"
     },
     {
       name: "Dra. Laís Hendges",
@@ -149,63 +243,7 @@ const Team = () => {
             >
               {teamMembers.map((member, index) => (
                 <SwiperSlide key={index} className="h-auto">
-                  <div 
-                    className="bg-[#FAF9F6] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col"
-                  >
-                    {/* Imagem do Profissional */}
-                    <div className="relative h-80 bg-gradient-to-br from-[#8FBC8F]/20 to-[#2F4F4F]/20 overflow-hidden shrink-0">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Overlay com efeito hover */}
-                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
-                    </div>
-                    
-                    {/* Informações do Profissional */}
-                    <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-serif text-primary mb-1">{member.name}</h3>
-                      <p className="text-sm text-secondary font-medium mb-3">{member.crp}</p>
-                      
-                      <div className="mb-4">
-                        <p className="text-sm font-bold text-text mb-2">{member.specialty}</p>
-                        <p className="text-sm text-light-text leading-relaxed">{member.bio}</p>
-                      </div>
-                      
-                      {/* Abordagens */}
-                      <div className="mb-4">
-                        <p className="text-xs font-bold text-text mb-2">Abordagens:</p>
-                        <div className="flex flex-wrap gap-2">
-                          {member.approaches.map((approach, idx) => (
-                            <span 
-                              key={idx} 
-                              className="text-xs bg-white px-3 py-1 rounded-full text-primary border border-[#8FBC8F]/30"
-                            >
-                              {approach}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* Ações */}
-                      <div className="flex gap-3 pt-4 border-t border-gray-200 mt-auto">
-                        <a 
-                          href={`mailto:${member.email}`}
-                          className="flex-1 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent transition-all text-center flex items-center justify-center gap-2"
-                        >
-                          <FaEnvelope className="text-xs" />
-                          Contato
-                        </a>
-                        <a 
-                          href="#contato"
-                          className="flex-1 border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-all text-center"
-                        >
-                          Agendar
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <TeamCard member={member} />
                 </SwiperSlide>
               ))}
             </Swiper>
