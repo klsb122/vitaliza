@@ -7,9 +7,9 @@ import 'swiper/css/navigation';
 import ScrollAnimation from './ScrollAnimation';
 
 import samara from '../assets/team-new/samara.webp';
-import rhuana from '../assets/team/rhuana.webp';
+import rhuana from '../assets/team-new/rhuana.webp';
 import mircia from '../assets/team-new/mircia.webp';
-import anna from '../assets/team/anna.webp';
+import anna from '../assets/team-new/anna.webp';
 import anne from '../assets/team-new/anne.webp';
 import hercules from '../assets/team-new/hercules.webp';
 import isabella from '../assets/team/isabella.webp';
@@ -84,38 +84,29 @@ const Team = () => {
       email: "tamires@vitaliza.com.br"
     },
     {
-      name: "Dra. Anna",
-      crp: "CRP 06/456789",
-      specialty: "Orientação Vocacional",
-      approaches: ["Análise Comportamental", "Coaching de Carreira"],
-      bio: "Auxilia jovens e adultos em transições de carreira e autoconhecimento profissional.",
+      name: "Anna Vitória Silva",
+      crp: "CRP 03/30427",
+      specialty: "Psicóloga Clínica",
+      approaches: ["Terapia Cognitivo-Comportamental", "Psicologia Infantojuvenil", "Regulação Emocional", "Habilidades Socioemocionais"],
+      bio: "Atua na área da Psicologia Infantojuvenil, com base na TCC, realizando atendimento especializado para crianças e adolescentes de 3 a 14 anos. Trabalha na identificação e modificação de padrões cognitivos, emocionais e comportamentais, auxiliando na construção de habilidades socioemocionais, regulação emocional e fortalecimento da autoestima. Atendimentos presenciais com intervenções baseadas em evidências, valorizando o vínculo terapêutico e o trabalho conjunto com família e escola.",
       image: anna,
       email: "anna@vitaliza.com.br"
     },
     {
-      name: "Dra. Rhuana",
-      crp: "CRP 06/234567",
-      specialty: "Psicologia Infantil",
-      approaches: ["Ludoterapia", "Terapia Familiar"],
-      bio: "Dedicada ao desenvolvimento emocional infantil e orientação parental.",
+      name: "Rhuana Tondatto",
+      crp: "CRP 03/19731",
+      specialty: "Psicóloga",
+      approaches: ["Psicologia Humanista", "Psicologia Existencial", "Terapia Sistêmica de Casal", "Terapia Individual"],
+      bio: "Atua na abordagem humanista e existencial, com formação em terapia sistêmica de casal e individual. Realiza atendimento on-line e presencial para adultos e adolescentes a partir de 13 anos, com objetivo de acolher e construir juntos uma trajetória de bem-estar e autoconhecimento.",
       image: rhuana,
       email: "rhuana@vitaliza.com.br"
     },
     {
-      name: "Dra. Isabella",
-      crp: "CRP 06/789012",
-      specialty: "Psicanálise",
-      approaches: ["Freudiana", "Lacaniana"],
-      bio: "Atendimento clínico com ênfase na escuta do inconsciente e análise dos sonhos.",
-      image: isabella,
-      email: "isabella@vitaliza.com.br"
-    },
-    {
-      name: "Dra. Lais",
-      crp: "CRP 06/890123",
-      specialty: "Psicologia do Esporte",
-      approaches: ["Treinamento Mental", "Biofeedback"],
-      bio: "Focada em otimizar a performance e o bem-estar de atletas de alto rendimento.",
+      name: "Dra. Laís Hendges",
+      crp: "CRM 32638 | RQE 23413",
+      specialty: "Médica Pediatra e Neuropediatra",
+      approaches: ["Pediatria", "Neurologia Infantil", "Neurodesenvolvimento", "Acompanhamento do Desenvolvimento"],
+      bio: "Formada em 2018 pelo Instituto Tocantinense Antônio Carlos Porto, com residência em Pediatria pelo Hospital do Oeste – Obras Sociais Irmã Dulce e pós-graduação em Neurologia Infantil pelo IPEMED/AFYA. Atua no cuidado integral da criança e do adolescente, com foco em avaliação, diagnóstico e acompanhamento de condições neurológicas e do desenvolvimento infantil, como atrasos no desenvolvimento neuropsicomotor, dificuldades de aprendizagem, transtornos do neurodesenvolvimento, cefaleias, epilepsia infantil, alterações do sono e acompanhamento de crianças com necessidades especiais. Atendimento humanizado, individualizado e baseado em evidências científicas.",
       image: lais,
       email: "lais@vitaliza.com.br"
     }
