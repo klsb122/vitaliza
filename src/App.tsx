@@ -5,6 +5,7 @@ import Features from './components/Features';
 import AboutUs from './components/AboutUs';
 import Team from './components/Team';
 import Services from './components/Services';
+import Approaches from './components/Approaches';
 import Cta from './components/Cta';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -18,6 +19,7 @@ function App() {
       <AboutUs />
       <Team />
       <Services />
+      <Approaches />
       <Cta />
       <Contact />
       <Footer />

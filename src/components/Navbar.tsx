@@ -32,6 +32,7 @@ const Navbar = () => {
           <li><a href="#sobre" className={`font-medium transition-colors ${scrolled ? 'text-text hover:text-secondary' : 'text-white hover:text-white/80'}`}>Sobre</a></li>
           <li><a href="#equipe" className={`font-medium transition-colors ${scrolled ? 'text-text hover:text-secondary' : 'text-white hover:text-white/80'}`}>Equipe</a></li>
           <li><a href="#servicos" className={`font-medium transition-colors ${scrolled ? 'text-text hover:text-secondary' : 'text-white hover:text-white/80'}`}>Serviços</a></li>
+          <li><a href="#abordagens" className={`font-medium transition-colors ${scrolled ? 'text-text hover:text-secondary' : 'text-white hover:text-white/80'}`}>Abordagens</a></li>
           <li><a href="#contato" className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-accent transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">Agendar Consulta</a></li>
         </ul>
 
@@ -50,6 +51,7 @@ const Navbar = () => {
         <a href="#sobre" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Sobre</a>
         <a href="#equipe" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Equipe</a>
         <a href="#servicos" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Serviços</a>
+        <a href="#abordagens" onClick={() => setIsOpen(false)} className="text-xl font-medium text-text hover:text-secondary">Abordagens</a>
         <a href="#contato" onClick={() => setIsOpen(false)} className="bg-primary text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-accent">Agendar Consulta</a>
       </div>
       

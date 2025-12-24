@@ -80,7 +80,18 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
   );
 };
 
+const MAX_BIO_LENGTH = 150;
+
 const Team = () => {
+  const [expandedCards, setExpandedCards] = useState<{ [key: number]: boolean }>({});
+
+  const toggleExpand = (index: number) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   const teamMembers = [
     {
       name: "Samara D. Dal-Lago",
@@ -164,11 +175,11 @@ const Team = () => {
       email: "anna@vitaliza.com.br"
     },
     {
-      name: "Dra. Isabella",
-      crp: "CRP 06/789012",
-      specialty: "Psicanálise",
-      approaches: ["Freudiana", "Lacaniana"],
-      bio: "Atendimento clínico com ênfase na escuta do inconsciente e análise dos sonhos.",
+      name: "Isabella Magalhães",
+      crp: "CRP 03/5944",
+      specialty: "Psicóloga Clínica",
+      approaches: ["Terapia Cognitivo-Comportamental", "Psicopatologia", "Obesidade e Emagrecimento"],
+      bio: "Atuação voltada para a Terapia Cognitivo-Comportamental (TCC), auxiliando você a enfrentar questões como ansiedade, autoestima e dificuldades emocionais do dia a dia. Atende pessoas que buscam apoio no processo de emagrecimento, compreendendo os aspectos emocionais que influenciam a relação com a comida e o corpo. Tem pós-graduação em Terapia Cognitivo Comportamental e em Psicopatologia, formação em Obesidade e Emagrecimento. Realiza atendimento on-line e presencial, para adolescentes a partir de 16 anos e adultos.",
       image: isabella,
       email: "isabella@vitaliza.com.br"
     },
@@ -243,7 +254,19 @@ const Team = () => {
                       
                       <div className="mb-4">
                         <p className="text-sm font-bold text-text mb-2">{member.specialty}</p>
-                        <p className="text-sm text-light-text leading-relaxed">{member.bio}</p>
+                        <p className="text-sm text-light-text leading-relaxed">
+                          {member.bio.length > MAX_BIO_LENGTH && !expandedCards[index]
+                            ? `${member.bio.substring(0, MAX_BIO_LENGTH)}...`
+                            : member.bio}
+                        </p>
+                        {member.bio.length > MAX_BIO_LENGTH && (
+                          <button
+                            onClick={() => toggleExpand(index)}
+                            className="text-sm text-secondary font-medium hover:text-primary transition-colors mt-2"
+                          >
+                            {expandedCards[index] ? 'Ver menos' : 'Ver mais'}
+                          </button>
+                        )}
                       </div>
                       
                       {/* Abordagens */}
