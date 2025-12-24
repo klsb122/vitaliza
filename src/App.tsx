@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 
 import Features from './components/Features';
 import AboutUs from './components/AboutUs';
+import MissionValues from './components/MissionValues';
 import Team from './components/Team';
 import Services from './components/Services';
 import Approaches from './components/Approaches';
@@ -17,6 +18,7 @@ function App() {
       <Hero />
       <Features />
       <AboutUs />
+      <MissionValues />
       <Team />
       <Services />
       <Approaches />
