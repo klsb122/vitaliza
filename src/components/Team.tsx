@@ -1,11 +1,13 @@
 import { FaEnvelope } from 'react-icons/fa';
+import { TbChevronDown } from 'react-icons/tb';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ScrollAnimation from './ScrollAnimation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import samara from '../assets/team-new/samara.webp';
 import rhuana from '../assets/team-new/rhuana.webp';
@@ -84,6 +86,19 @@ const MAX_BIO_LENGTH = 150;
 
 const Team = () => {
   const [expandedCards, setExpandedCards] = useState<{ [key: number]: boolean }>({});
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  const handleMouseEnterButton = () => {
+    if (swiperRef.current?.autoplay) {
+      swiperRef.current.autoplay.stop();
+    }
+  };
+
+  const handleMouseLeaveButton = () => {
+    if (swiperRef.current?.autoplay) {
+      swiperRef.current.autoplay.start();
+    }
+  };
 
   const toggleExpand = (index: number) => {
     setExpandedCards(prev => ({
@@ -216,6 +231,7 @@ const Team = () => {
               navigation
               pagination={{ clickable: true }}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
+              onSwiper={(swiper) => { swiperRef.current = swiper; }}
               loop={true}
               breakpoints={{
                 640: {
@@ -254,17 +270,34 @@ const Team = () => {
                       
                       <div className="mb-4">
                         <p className="text-sm font-bold text-text mb-2">{member.specialty}</p>
+                        
+                        {/* Bio com expansão animada */}
                         <p className="text-sm text-light-text leading-relaxed">
-                          {member.bio.length > MAX_BIO_LENGTH && !expandedCards[index]
-                            ? `${member.bio.substring(0, MAX_BIO_LENGTH)}...`
-                            : member.bio}
+                          {member.bio.substring(0, MAX_BIO_LENGTH)}
+                          {member.bio.length > MAX_BIO_LENGTH && !expandedCards[index] && '...'}
                         </p>
+                        
+                        {/* Conteúdo expandido com animação suave */}
+                        {member.bio.length > MAX_BIO_LENGTH && (
+                          <div className={`expand-content ${expandedCards[index] ? 'expanded' : ''}`}>
+                            <div>
+                              <p className="text-sm text-light-text leading-relaxed fade-in-content">
+                                {member.bio.substring(MAX_BIO_LENGTH)}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Botão Ver mais/menos com animação */}
                         {member.bio.length > MAX_BIO_LENGTH && (
                           <button
                             onClick={() => toggleExpand(index)}
-                            className="text-sm text-secondary font-medium hover:text-primary transition-colors mt-2"
+                            onMouseEnter={handleMouseEnterButton}
+                            onMouseLeave={handleMouseLeaveButton}
+                            className="expand-button inline-flex items-center gap-1.5 text-sm text-secondary font-medium hover:text-primary transition-colors mt-3 py-1.5 px-3 rounded-lg"
                           >
-                            {expandedCards[index] ? 'Ver menos' : 'Ver mais'}
+                            <span>{expandedCards[index] ? 'Ver menos' : 'Ver mais'}</span>
+                            <TbChevronDown className={`chevron-icon text-base ${expandedCards[index] ? 'rotated' : ''}`} />
                           </button>
                         )}
                       </div>

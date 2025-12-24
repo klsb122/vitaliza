@@ -67,8 +67,8 @@ const Services = () => {
                   </div>
                   <h3 className="text-xl font-serif text-primary mb-3">{service.title}</h3>
                   <p className="text-light-text text-sm leading-relaxed mb-5">{service.description}</p>
-                  <a href="#contato" className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                    Saiba mais <FaArrowRight className="text-xs" />
+                  <a href="#contato" className="animated-underline inline-flex items-center gap-2 text-primary font-semibold text-sm">
+                    Saiba mais <FaArrowRight className="arrow-animate text-xs" />
                   </a>
                 </div>
               </ScrollAnimation>

@@ -16,3 +16,89 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
 }
+
+/* ========================================
+   Animações Suaves para Cards e Botões
+   ======================================== */
+
+/* Transição suave de altura para conteúdo expansível */
+.expand-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms ease-out;
+}
+
+.expand-content.expanded {
+  grid-template-rows: 1fr;
+}
+
+.expand-content > div {
+  overflow: hidden;
+}
+
+/* Animação de fade para conteúdo que aparece */
+.fade-in-content {
+  opacity: 0;
+  transition: opacity 400ms ease-out 100ms;
+}
+
+.expanded .fade-in-content {
+  opacity: 1;
+}
+
+/* Rotação suave do ícone chevron */
+.chevron-icon {
+  transition: transform 400ms ease-out;
+}
+
+.chevron-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Underline animado para links */
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 300ms ease-out;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Hover suave para botões de expansão */
+.expand-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.expand-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(143, 188, 143, 0.1), rgba(47, 79, 79, 0.05));
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+.expand-button:hover::before {
+  opacity: 1;
+}
+
+/* Animação da seta nos links "Saiba mais" */
+.arrow-animate {
+  transition: transform 300ms ease-out;
+}
+
+.group:hover .arrow-animate {
+  transform: translateX(4px);
+}
