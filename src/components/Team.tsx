@@ -9,17 +9,17 @@ import 'swiper/css/navigation';
 import ScrollAnimation from './ScrollAnimation';
 import { useState, useEffect, useRef } from 'react';
 
-import samara from '../assets/team-new/samara.webp';
-import rhuana from '../assets/team-new/rhuana.webp';
-import mircia from '../assets/team-new/mircia.webp';
-import anna from '../assets/team-new/anna.webp';
-import anne from '../assets/team-new/anne.webp';
-import hercules from '../assets/team-new/hercules.webp';
-import isabella from '../assets/team-new/isabella.webp';
-import lais from '../assets/team-new/lais.webp';
-import lorena from '../assets/team-new/lorena.webp';
-import rhania from '../assets/team-new/rhania.webp';
-import tamires from '../assets/team-new/tamires.webp';
+import samara from '../assets/team/samara.webp';
+import rhuana from '../assets/team/rhuana.webp';
+import mircia from '../assets/team/mircia.webp';
+import anna from '../assets/team/anna.webp';
+import anne from '../assets/team/anne.webp';
+import hercules from '../assets/team/hercules.webp';
+import isabella from '../assets/team/isabella.webp';
+import lais from '../assets/team/lais.webp';
+import lorena from '../assets/team/lorena.webp';
+import rhania from '../assets/team/rhania.webp';
+import tamires from '../assets/team/tamires.webp';
 
 // Componente de imagem otimizada com lazy loading e skeleton
 const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }: { src: string; alt: string; priority?: boolean; imagePosition?: 'top' | 'center' | 'bottom' }) => {
