@@ -8,7 +8,7 @@ import ScrollAnimation from './ScrollAnimation';
 import { useState, useEffect } from 'react';
 
 import samara from '../assets/team-new/samara.webp';
-import rhuana from '../assets/team-new/rhuana.webp';
+import rhuana from '../assets/team-new/rhuana.jpg';
 import mircia from '../assets/team-new/mircia.webp';
 import anna from '../assets/team-new/anna.webp';
 import anne from '../assets/team-new/anne.webp';
@@ -20,7 +20,7 @@ import rhania from '../assets/team-new/rhania.webp';
 import tamires from '../assets/team-new/tamires.webp';
 
 // Componente de imagem otimizada com lazy loading e skeleton
-const OptimizedImage = ({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) => {
+const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }: { src: string; alt: string; priority?: boolean; imagePosition?: 'top' | 'center' | 'bottom' }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
 
@@ -73,7 +73,7 @@ const OptimizedImage = ({ src, alt, priority = false }: { src: string; alt: stri
           loading={priority ? "eager" : "lazy"}
           decoding="async"
           onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${imagePosition === 'top' ? 'object-top' : imagePosition === 'bottom' ? 'object-bottom' : 'object-center'}`}
         />
       )}
     </div>
@@ -90,6 +90,15 @@ const Team = () => {
       bio: "Atua auxiliando indivíduos a compreenderem seus padrões emocionais, cognitivos e comportamentais, promovendo mudanças significativas e duradouras. Atendimento on-line e presencial para adolescentes a partir de 16 anos e adultos.",
       image: samara,
       email: "samara@vitaliza.com.br"
+    },
+    {
+      name: "Rhuana Tondatto",
+      crp: "CRP 03/19731",
+      specialty: "Psicóloga",
+      approaches: ["Humanista Existencial", "Terapia Sistêmica de Casal", "Terapia Individual"],
+      bio: "Atua na abordagem humanista e existencial, com formação em terapia sistêmica de casal e individual. Realiza atendimento on-line e presencial para adultos e adolescentes a partir de 13 anos, com objetivo de acolher e construir juntos uma trajetória de bem-estar e autoconhecimento.",
+      image: rhuana,
+      email: "rhuana@vitaliza.com.br"
     },
     {
       name: "Rhania Menezes",
@@ -153,15 +162,6 @@ const Team = () => {
       bio: "Atua na Psicologia Infantojuvenil com base na TCC, realizando atendimento especializado para crianças e adolescentes de 3 a 14 anos. Seu trabalho é direcionado à identificação e modificação de padrões cognitivos, emocionais e comportamentais, auxiliando na construção de habilidades socioemocionais e fortalecimento da autoestima. Realiza atendimentos presenciais com intervenções baseadas em evidências.",
       image: anna,
       email: "anna@vitaliza.com.br"
-    },
-    {
-      name: "Rhuana Tondatto",
-      crp: "CRP 03/19731",
-      specialty: "Psicóloga",
-      approaches: ["Humanista Existencial", "Terapia Sistêmica de Casal", "Terapia Individual"],
-      bio: "Atua na abordagem humanista e existencial, com formação em terapia sistêmica de casal e individual. Realiza atendimento on-line e presencial para adultos e adolescentes a partir de 13 anos, com objetivo de acolher e construir juntos uma trajetória de bem-estar e autoconhecimento.",
-      image: rhuana,
-      email: "rhuana@vitaliza.com.br"
     },
     {
       name: "Dra. Isabella",
@@ -230,6 +230,7 @@ const Team = () => {
                         src={member.image} 
                         alt={member.name}
                         priority={index < 4} // Priorizar as primeiras 4 imagens
+                        imagePosition={(member as any).imagePosition}
                       />
                       {/* Overlay com efeito hover */}
                       <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
