@@ -8,7 +8,7 @@ import ScrollAnimation from './ScrollAnimation';
 import { useState, useEffect } from 'react';
 
 import samara from '../assets/team-new/samara.webp';
-import rhuana from '../assets/team-new/rhuana.jpg';
+import rhuana from '../assets/team-new/rhuana.webp';
 import mircia from '../assets/team-new/mircia.webp';
 import anna from '../assets/team-new/anna.webp';
 import anne from '../assets/team-new/anne.webp';
