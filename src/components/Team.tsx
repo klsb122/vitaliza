@@ -1,4 +1,4 @@
-import { FaEnvelope } from 'react-icons/fa';
+
 import { TbChevronDown } from 'react-icons/tb';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
@@ -114,8 +114,7 @@ const Team = () => {
       specialty: "Psicóloga Clínica",
       approaches: ["Terapia Cognitivo-Comportamental", "Terapia do Esquema Cognitivo", "Relacionamento e Sexualidade", "Psicologia Jurídica", "Inteligência Criminal"],
       bio: "Atua auxiliando indivíduos a compreenderem seus padrões emocionais, cognitivos e comportamentais, promovendo mudanças significativas e duradouras. Atendimento on-line e presencial para adolescentes a partir de 16 anos e adultos.",
-      image: samara,
-      email: "samara@vitaliza.com.br"
+      image: samara
     },
     {
       name: "Rhuana Tondatto",
@@ -123,8 +122,7 @@ const Team = () => {
       specialty: "Psicóloga",
       approaches: ["Humanista Existencial", "Terapia Sistêmica de Casal", "Terapia Individual"],
       bio: "Atua na abordagem humanista e existencial, com formação em terapia sistêmica de casal e individual. Realiza atendimento on-line e presencial para adultos e adolescentes a partir de 13 anos, com objetivo de acolher e construir juntos uma trajetória de bem-estar e autoconhecimento.",
-      image: rhuana,
-      email: "rhuana@vitaliza.com.br"
+      image: rhuana
     },
     {
       name: "Rhania Menezes",
@@ -132,8 +130,7 @@ const Team = () => {
       specialty: "Psicóloga Clínica",
       approaches: ["Terapia Cognitivo-Comportamental", "Psicopatologia", "Psicoterapias Baseadas em Evidências"],
       bio: "Atua com foco na mudança de processos cognitivos, emocionais e comportamentais. Especializada em avaliação diagnóstica de transtornos mentais. Atendimentos on-line e presenciais para adolescentes e adultos.",
-      image: rhania,
-      email: "rhania@vitaliza.com.br"
+      image: rhania
     },
     {
       name: "Dr. Hercules Hideki Makio",
@@ -141,8 +138,7 @@ const Team = () => {
       specialty: "Médico Psiquiatra",
       approaches: ["Terapia Cognitivo-Comportamental", "Psiquiatria Clínica"],
       bio: "Graduado pela UFMS com residência em psiquiatria. Atendimentos presenciais e online a partir de 6 anos. Valoriza o vínculo, a escuta e a empatia como princípios fundamentais, promovendo bem-estar e qualidade de vida.",
-      image: hercules,
-      email: "hercules@vitaliza.com.br"
+      image: hercules
     },
     {
       name: "Lorena dos Reis Dias Lermen",
@@ -150,8 +146,7 @@ const Team = () => {
       specialty: "Psicóloga",
       approaches: ["Gestalt-terapia", "Perdas e Luto", "Psicologia da Saúde e Hospitalar", "Psicologia do Trânsito"],
       bio: "Formada pela Universidade Católica de Goiás. Credenciada junto à Polícia Federal. Atende adultos e idosos, presencial e on-line. Realiza avaliação psicológica (porte/posse de arma, pré-cirúrgica, vocacional, admissional e do trabalho).",
-      image: lorena,
-      email: "lorena@vitaliza.com.br"
+      image: lorena
     },
     {
       name: "Anne Caroline Farias",
@@ -159,8 +154,7 @@ const Team = () => {
       specialty: "Psicóloga Clínica",
       approaches: ["Terapia Cognitivo-Comportamental", "Terapia do Esquema", "Neurociência do Comportamento Humano"],
       bio: "Atua com foco no desenvolvimento de relações seguras e saudáveis, compreendendo as necessidades emocionais do indivíduo. Atendimento online e presencial para adolescentes e adultos, individual e casal.",
-      image: anne,
-      email: "anne@vitaliza.com.br"
+      image: anne
     },
     {
       name: "Mírcia Dantas de Sá Carneiro",
@@ -168,8 +162,7 @@ const Team = () => {
       specialty: "Psicóloga Clínica",
       approaches: ["Psicologia Analítica", "Terapia Sistêmica", "Terapia EMDR", "Terapia Brainspotting"],
       bio: "Especializada em Terapia de Família e Casal. Auxilia pacientes a processar experiências traumáticas e memórias dolorosas. Atendimentos online e presencial para adultos, idosos, família, casal e grupos. Oferece Consultoria Empresarial e implementação da NR-1.",
-      image: mircia,
-      email: "mircia@vitaliza.com.br"
+      image: mircia
     },
     {
       name: "Tamires Carvalho",
@@ -177,8 +170,7 @@ const Team = () => {
       specialty: "Psicóloga e Neuropsicóloga",
       approaches: ["Terapia Cognitivo-Comportamental", "Neuropsicologia", "Avaliação Neuropsicológica"],
       bio: "Atua em avaliações neuropsicológicas e psicoterapia. Atendimentos exclusivamente presenciais para crianças a partir de 3 anos, adolescentes, adultos e idosos. Foco em funções cognitivas como atenção, memória, linguagem, aprendizagem e regulação emocional.",
-      image: tamires,
-      email: "tamires@vitaliza.com.br"
+      image: tamires
     },
     {
       name: "Anna Vitória Silva",
@@ -186,8 +178,7 @@ const Team = () => {
       specialty: "Psicóloga Clínica Infantojuvenil",
       approaches: ["Terapia Cognitivo-Comportamental", "Habilidades Socioemocionais", "Regulação Emocional"],
       bio: "Atua na Psicologia Infantojuvenil com base na TCC, realizando atendimento especializado para crianças e adolescentes de 3 a 14 anos. Seu trabalho é direcionado à identificação e modificação de padrões cognitivos, emocionais e comportamentais, auxiliando na construção de habilidades socioemocionais e fortalecimento da autoestima. Realiza atendimentos presenciais com intervenções baseadas em evidências.",
-      image: anna,
-      email: "anna@vitaliza.com.br"
+      image: anna
     },
     {
       name: "Isabella Magalhães",
@@ -195,8 +186,7 @@ const Team = () => {
       specialty: "Psicóloga Clínica",
       approaches: ["Terapia Cognitivo-Comportamental", "Psicopatologia", "Obesidade e Emagrecimento"],
       bio: "Atuação voltada para a Terapia Cognitivo-Comportamental (TCC), auxiliando você a enfrentar questões como ansiedade, autoestima e dificuldades emocionais do dia a dia. Atende pessoas que buscam apoio no processo de emagrecimento, compreendendo os aspectos emocionais que influenciam a relação com a comida e o corpo. Tem pós-graduação em Terapia Cognitivo Comportamental e em Psicopatologia, formação em Obesidade e Emagrecimento. Realiza atendimento on-line e presencial, para adolescentes a partir de 16 anos e adultos.",
-      image: isabella,
-      email: "isabella@vitaliza.com.br"
+      image: isabella
     },
     {
       name: "Dra. Laís Hendges",
@@ -204,8 +194,7 @@ const Team = () => {
       specialty: "Médica Pediatra e Neuropediatra",
       approaches: ["Neurologia Infantil", "Neurodesenvolvimento", "Pediatria"],
       bio: "Formada em 2018, possui residência em Pediatria e pós-graduação em Neurologia Infantil. Atua no cuidado integral da criança e do adolescente, com foco na avaliação, diagnóstico e acompanhamento de condições neurológicas e do desenvolvimento infantil, como atrasos no desenvolvimento neuropsicomotor, transtornos do neurodesenvolvimento, epilepsia infantil e alterações do sono.",
-      image: lais,
-      email: "lais@vitaliza.com.br"
+      image: lais
     }
   ];
 
@@ -318,17 +307,10 @@ const Team = () => {
                       </div>
                       
                       {/* Ações */}
-                      <div className="flex gap-3 pt-4 border-t border-gray-200 mt-auto">
-                        <a 
-                          href={`mailto:${member.email}`}
-                          className="flex-1 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent transition-all text-center flex items-center justify-center gap-2"
-                        >
-                          <FaEnvelope className="text-xs" />
-                          Contato
-                        </a>
+                      <div className="pt-4 border-t border-gray-200 mt-auto">
                         <a 
                           href="#contato"
-                          className="flex-1 border-2 border-primary text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-all text-center"
+                          className="w-full block bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent transition-all text-center"
                         >
                           Agendar
                         </a>
