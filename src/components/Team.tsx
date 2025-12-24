@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ScrollAnimation from './ScrollAnimation';
+import { useState, useEffect } from 'react';
 
 import samara from '../assets/team-new/samara.webp';
 import rhuana from '../assets/team-new/rhuana.webp';
@@ -17,6 +18,67 @@ import lais from '../assets/team-new/lais.webp';
 import lorena from '../assets/team-new/lorena.webp';
 import rhania from '../assets/team-new/rhania.webp';
 import tamires from '../assets/team-new/tamires.webp';
+
+// Componente de imagem otimizada com lazy loading e skeleton
+const OptimizedImage = ({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(priority);
+
+  useEffect(() => {
+    if (priority) {
+      // Preload imagens prioritárias
+      const img = new Image();
+      img.src = src;
+      img.onload = () => setIsLoaded(true);
+    }
+  }, [src, priority]);
+
+  useEffect(() => {
+    if (!priority) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+          }
+        },
+        { rootMargin: '200px' } // Começar a carregar 200px antes de entrar na viewport
+      );
+
+      const placeholder = document.getElementById(`img-placeholder-${alt.replace(/\s/g, '-')}`);
+      if (placeholder) {
+        observer.observe(placeholder);
+      }
+
+      return () => observer.disconnect();
+    }
+  }, [alt, priority]);
+
+  return (
+    <div 
+      id={`img-placeholder-${alt.replace(/\s/g, '-')}`}
+      className="relative w-full h-full"
+    >
+      {/* Skeleton loading */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-[#8FBC8F]/30 to-[#2F4F4F]/30 animate-pulse flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full bg-[#8FBC8F]/40 animate-pulse"></div>
+        </div>
+      )}
+      
+      {/* Imagem real */}
+      {isInView && (
+        <img 
+          src={src} 
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          onLoad={() => setIsLoaded(true)}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        />
+      )}
+    </div>
+  );
+};
 
 const Team = () => {
   const teamMembers = [
@@ -164,10 +226,10 @@ const Team = () => {
                   >
                     {/* Imagem do Profissional */}
                     <div className="relative h-80 bg-gradient-to-br from-[#8FBC8F]/20 to-[#2F4F4F]/20 overflow-hidden shrink-0">
-                      <img 
+                      <OptimizedImage 
                         src={member.image} 
                         alt={member.name}
-                        className="w-full h-full object-cover"
+                        priority={index < 4} // Priorizar as primeiras 4 imagens
                       />
                       {/* Overlay com efeito hover */}
                       <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
