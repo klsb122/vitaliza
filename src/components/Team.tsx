@@ -98,6 +98,80 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
 
 const MAX_BIO_LENGTH = 150;
 
+// Função para truncar texto sem cortar palavras no meio
+const truncateAtWord = (text: string, maxLength: number): { truncated: string; rest: string } => {
+  if (text.length <= maxLength) {
+    return { truncated: text, rest: '' };
+  }
+  
+  const lastSpace = text.lastIndexOf(' ', maxLength);
+  const cutPoint = lastSpace > 0 ? lastSpace : maxLength;
+  
+  return {
+    truncated: text.substring(0, cutPoint),
+    rest: text.substring(cutPoint).trim()
+  };
+};
+
+// Componente para texto expansível
+interface ExpandableTextProps {
+  text: string;
+  maxLength: number;
+  isExpanded: boolean;
+  onToggle: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  showFullText?: boolean;
+}
+
+const ExpandableText = ({ 
+  text, 
+  maxLength, 
+  isExpanded, 
+  onToggle, 
+  onMouseEnter, 
+  onMouseLeave,
+  showFullText = false 
+}: ExpandableTextProps) => {
+  // Se deve mostrar texto completo, renderiza simples
+  if (showFullText) {
+    return (
+      <p className="text-[15px] text-gray-600 leading-relaxed">
+        {text}
+      </p>
+    );
+  }
+
+  const { truncated, rest } = truncateAtWord(text, maxLength);
+  const needsExpansion = rest.length > 0;
+
+  // Se não precisa de expansão, mostra texto completo
+  if (!needsExpansion) {
+    return (
+      <p className="text-[15px] text-gray-600 leading-relaxed">
+        {text}
+      </p>
+    );
+  }
+
+  return (
+    <>
+      <p className="text-[15px] text-gray-600 leading-relaxed">
+        {isExpanded ? text : `${truncated}...`}
+      </p>
+      
+      <button
+        onClick={onToggle}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        className="expand-button inline-flex items-center gap-1 text-sm text-secondary font-semibold hover:text-primary transition-colors mt-2"
+      >
+        <span>{isExpanded ? 'Ler menos' : 'Ler mais'}</span>
+        <TbChevronDown className={`chevron-icon text-lg ${isExpanded ? 'rotated' : ''}`} />
+      </button>
+    </>
+  );
+};
 const Team = () => {
   const [expandedCards, setExpandedCards] = useState<{ [key: number]: boolean }>({});
   const swiperRef = useRef<SwiperType | null>(null);
@@ -282,105 +356,90 @@ const Team = () => {
               className="!pb-20"
             >
               {teamMembers.map((member, index) => (
-                <SwiperSlide key={index} className="!h-auto">
+                <SwiperSlide key={index} className="!h-auto pb-6">
                   <div 
-                    className={`bg-[#FAF9F6] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col relative ${
-                      expandedCards[index] ? 'h-auto' : 'h-[700px]'
-                    }`}
+                    className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group flex flex-col h-full border border-gray-100/50`}
                   >
                     {/* Imagem do Profissional */}
-                    <div className="relative h-72 bg-gradient-to-br from-[#8FBC8F]/20 to-[#2F4F4F]/20 overflow-hidden shrink-0">
+                    <div className="relative h-64 bg-gradient-to-br from-[#8FBC8F]/20 to-[#2F4F4F]/20 overflow-hidden shrink-0">
                       <OptimizedImage 
                         src={member.image} 
                         alt={member.name}
-                        priority={index < 4} // Priorizar as primeiras 4 imagens
+                        priority={index < 4}
                         imagePosition={member.imagePosition}
                       />
                       {/* Overlay com efeito hover */}
-                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
                     
                     {/* Informações do Profissional */}
-                    <div className="p-6 pb-24 flex-1 flex flex-col overflow-hidden">
-                      <h3 className="text-xl font-serif text-primary mb-1">{member.name}</h3>
-                      <p className="text-sm text-secondary font-medium mb-2">{member.crp}</p>
-                      
-                      {/* Bio */}
-                      <div className="mb-3 flex-shrink-0">
-                        <p className="text-sm font-bold text-text mb-1">{member.specialty}</p>
-                        
-                        {/* Bio com expansão animada */}
-                        <p className="text-sm text-light-text leading-relaxed">
-                          {member.bio.substring(0, MAX_BIO_LENGTH)}
-                          {member.bio.length > MAX_BIO_LENGTH && !expandedCards[index] && '...'}
-                        </p>
-                        
-                        {/* Conteúdo expandido com animação suave */}
-                        {member.bio.length > MAX_BIO_LENGTH && (
-                          <div className={`expand-content ${expandedCards[index] ? 'expanded' : ''}`}>
-                            <div>
-                              <p className="text-sm text-light-text leading-relaxed fade-in-content">
-                                {member.bio.substring(MAX_BIO_LENGTH)}
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                        
-                        {/* Botão Ver mais/menos com animação */}
-                        {member.bio.length > MAX_BIO_LENGTH && (
-                          <button
-                            onClick={() => toggleExpand(index)}
-                            onMouseEnter={handleMouseEnterButton}
-                            onMouseLeave={handleMouseLeaveButton}
-                            className="expand-button inline-flex items-center gap-1.5 text-sm text-secondary font-medium hover:text-primary transition-colors mt-2 py-1 px-2 rounded-lg"
-                          >
-                            <span>{expandedCards[index] ? 'Ver menos' : 'Ver mais'}</span>
-                            <TbChevronDown className={`chevron-icon text-base ${expandedCards[index] ? 'rotated' : ''}`} />
-                          </button>
-                        )}
+                    <div className="p-5 flex-1 flex flex-col">
+                      <div className="mb-3">
+                        <h3 className="text-xl font-serif text-primary font-bold mb-1 group-hover:text-secondary transition-colors">{member.name}</h3>
+                        <p className="text-sm text-secondary font-medium tracking-wide">{member.crp}</p>
                       </div>
                       
-                      {/* Abordagens */}
-                      {member.approaches.length > 0 && (
-                        <div className="mb-3 flex-shrink-0">
-                          <p className="text-xs font-bold text-text mb-2">Abordagens:</p>
-                          <div className="flex flex-wrap gap-1.5">
-                            {member.approaches.map((approach, idx) => (
-                              <span 
-                                key={idx} 
-                                className="text-xs bg-white px-2.5 py-1 rounded-full text-primary border border-[#8FBC8F]/30"
-                              >
-                                {approach}
-                              </span>
-                            ))}
-                          </div>
+                      {/* Bio */}
+                      <div className="mb-4">
+                        <p className="text-sm font-bold text-gray-800 mb-2 uppercase tracking-wider text-xs">{member.specialty}</p>
+                        
+                        <ExpandableText
+                          text={member.bio}
+                          maxLength={MAX_BIO_LENGTH}
+                          isExpanded={expandedCards[index] || false}
+                          onToggle={() => toggleExpand(index)}
+                          onMouseEnter={handleMouseEnterButton}
+                          onMouseLeave={handleMouseLeaveButton}
+                          showFullText={member.approaches.length === 0 && member.specializations.length === 0}
+                        />
+                      </div>
+                      
+                      {/* Tags (Abordagens e Especializações) - Renderiza apenas se houver conteúdo */}
+                      {(member.approaches.length > 0 || member.specializations.length > 0) && (
+                        <div className="space-y-3 mb-4">
+                          {/* Abordagens */}
+                          {member.approaches.length > 0 && (
+                            <div>
+                              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Abordagem</p>
+                              <div className="flex flex-wrap gap-2">
+                                {member.approaches.map((approach, idx) => (
+                                  <span 
+                                    key={idx} 
+                                    className="text-[11px] font-medium bg-green-50 text-green-800 px-2.5 py-1 rounded-md border border-green-100"
+                                  >
+                                    {approach}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Especializações */}
+                          {member.specializations.length > 0 && (
+                            <div>
+                              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Especialidades</p>
+                              <div className="flex flex-wrap gap-2">
+                                {member.specializations.map((spec, idx) => (
+                                  <span 
+                                    key={idx} 
+                                    className="text-[11px] font-medium bg-gray-50 text-gray-700 px-2.5 py-1 rounded-md border border-gray-100"
+                                  >
+                                    {spec}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )}
                       
-                      {/* Especializações */}
-                      {member.specializations.length > 0 && (
-                        <div className="mb-3 overflow-hidden">
-                          <p className="text-xs font-bold text-text mb-2">Especializações:</p>
-                          <div className="flex flex-wrap gap-1.5">
-                            {member.specializations.map((spec, idx) => (
-                              <span 
-                                key={idx} 
-                                className="text-xs bg-[#2F4F4F]/10 px-2.5 py-1 rounded-full text-[#2F4F4F] border border-[#2F4F4F]/20"
-                              >
-                                {spec}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      
-                      {/* Ações */}
-                      <div className="absolute bottom-0 left-0 w-full p-6 pt-3 bg-[#FAF9F6] border-t border-gray-100">
+                      {/* Botão de Ação */}
+                      <div className="mt-auto pt-3 border-t border-gray-100">
                         <a 
                           href="#contato"
-                          className="w-full block bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent transition-all text-center"
+                          className="w-full flex justify-center items-center gap-2 bg-primary text-white py-2.5 px-4 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all shadow-sm hover:shadow-md transform active:scale-95"
                         >
-                          Agendar
+                          Agendar Consulta
                         </a>
                       </div>
                     </div>
