@@ -171,21 +171,39 @@ const ExpandableText = ({
   }
 
   return (
-    <>
+    <div className="expandable-text-container">
+      {/* Texto truncado - sempre visível */}
       <p className="text-[13px] text-gray-600 leading-relaxed">
-        {isExpanded ? text : `${truncated}...`}
+        {truncated}
+        <span className={`inline transition-opacity duration-300 ${isExpanded ? 'opacity-0 hidden' : 'opacity-100'}`}>...</span>
       </p>
       
+      {/* Texto restante - animado */}
+      <div 
+        className={`expandable-content grid transition-all duration-500 ease-out ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+      >
+        <div className="overflow-hidden">
+          <p className="text-[13px] text-gray-600 leading-relaxed">
+            {rest}
+          </p>
+        </div>
+      </div>
+      
+      {/* Botão Ver Mais - Design moderno */}
       <button
         onClick={onToggle}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className="expand-button inline-flex items-center gap-1 text-sm text-secondary font-semibold hover:text-primary transition-colors mt-2"
+        className="group/btn relative inline-flex items-center gap-1.5 text-[12px] text-secondary font-semibold mt-3 py-1.5 px-3 rounded-full bg-secondary/5 hover:bg-secondary/15 transition-all duration-300 hover:shadow-sm"
       >
-        <span>{isExpanded ? 'Ler menos' : 'Ler mais'}</span>
-        <TbChevronDown className={`chevron-icon text-lg ${isExpanded ? 'rotated' : ''}`} />
+        <span className="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-0.5">
+          {isExpanded ? 'Ler menos' : 'Ler mais'}
+        </span>
+        <TbChevronDown 
+          className={`relative z-10 text-base transition-all duration-400 ease-out ${isExpanded ? 'rotate-180' : 'rotate-0'} group-hover/btn:scale-110`} 
+        />
       </button>
-    </>
+    </div>
   );
 };
 const Team = () => {
@@ -438,17 +456,18 @@ const Team = () => {
                                 <span className="w-1 h-1 rounded-full bg-secondary"></span>
                                 Abordagem
                               </p>
-                              <div className="flex flex-wrap gap-1">
+                              <div className="flex flex-wrap gap-1 transition-all duration-300">
                                 {(expandedCards[index] ? member.approaches : member.approaches.slice(0, 2)).map((approach, idx) => (
                                   <span 
                                     key={idx} 
-                                    className="text-[10px] font-medium bg-secondary/10 text-secondary px-1.5 py-0.5 rounded border border-secondary/20"
+                                    className={`text-[10px] font-medium bg-secondary/10 text-secondary px-1.5 py-0.5 rounded border border-secondary/20 transition-all duration-300 ${idx >= 2 && expandedCards[index] ? 'animate-fade-in' : ''}`}
+                                    style={idx >= 2 && expandedCards[index] ? { animationDelay: `${(idx - 2) * 50}ms` } : {}}
                                   >
                                     {approach}
                                   </span>
                                 ))}
                                 {!expandedCards[index] && member.approaches.length > 2 && (
-                                  <span className="text-[10px] font-medium text-secondary/70 px-1.5 py-0.5">
+                                  <span className="text-[10px] font-medium text-secondary/70 px-1.5 py-0.5 cursor-pointer hover:text-secondary transition-colors">
                                     +{member.approaches.length - 2}
                                   </span>
                                 )}
@@ -463,17 +482,18 @@ const Team = () => {
                                 <span className="w-1 h-1 rounded-full bg-primary"></span>
                                 Especialidades
                               </p>
-                              <div className="flex flex-wrap gap-1">
+                              <div className="flex flex-wrap gap-1 transition-all duration-300">
                                 {(expandedCards[index] ? member.specializations : member.specializations.slice(0, 2)).map((spec, idx) => (
                                   <span 
                                     key={idx} 
-                                    className="text-[10px] font-medium bg-gray-50 text-gray-600 px-1.5 py-0.5 rounded border border-gray-100 group-hover:border-primary/20 transition-colors"
+                                    className={`text-[10px] font-medium bg-gray-50 text-gray-600 px-1.5 py-0.5 rounded border border-gray-100 group-hover:border-primary/20 transition-all duration-300 ${idx >= 2 && expandedCards[index] ? 'animate-fade-in' : ''}`}
+                                    style={idx >= 2 && expandedCards[index] ? { animationDelay: `${(idx - 2) * 50}ms` } : {}}
                                   >
                                     {spec}
                                   </span>
                                 ))}
                                 {!expandedCards[index] && member.specializations.length > 2 && (
-                                  <span className="text-[10px] font-medium text-gray-400 px-1.5 py-0.5">
+                                  <span className="text-[10px] font-medium text-gray-400 px-1.5 py-0.5 cursor-pointer hover:text-gray-600 transition-colors">
                                     +{member.specializations.length - 2}
                                   </span>
                                 )}
