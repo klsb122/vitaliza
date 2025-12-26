@@ -96,7 +96,23 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
   );
 };
 
-const MAX_BIO_LENGTH = 150;
+const BASE_BIO_LENGTH = 200;
+const EXTRA_CHARS_PER_MISSING_TAG = 80;
+
+// Calcula o tamanho máximo da bio baseado na quantidade de tags
+const calculateMaxBioLength = (approachesCount: number, specializationsCount: number): number => {
+  const totalTags = approachesCount + specializationsCount;
+  
+  // Se não tem tags, mostra tudo (será tratado pelo showFullText)
+  if (totalTags === 0) return 9999;
+  
+  // Quanto menos tags, mais texto pode mostrar
+  // Base: 200 chars. Para cada tag a menos de 6, adiciona 80 chars
+  const maxExpectedTags = 6;
+  const missingTags = Math.max(0, maxExpectedTags - totalTags);
+  
+  return BASE_BIO_LENGTH + (missingTags * EXTRA_CHARS_PER_MISSING_TAG);
+};
 
 // Função para truncar texto sem cortar palavras no meio
 const truncateAtWord = (text: string, maxLength: number): { truncated: string; rest: string } => {
@@ -392,19 +408,18 @@ const Team = () => {
                     </div>
                     
                     {/* Informações do Profissional */}
-                    <div className="p-5 flex-1 flex flex-col">
-                      <div className="mb-3">
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="mb-5 text-center border-b border-gray-100 pb-4">
                         <h3 className="text-xl font-serif text-primary font-bold mb-1 group-hover:text-secondary transition-colors">{member.name}</h3>
-                        <p className="text-sm text-secondary font-medium tracking-wide">{member.crp}</p>
+                        <p className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-1">{member.specialty}</p>
+                        <p className="text-xs text-secondary/80 font-medium tracking-widest">{member.crp}</p>
                       </div>
                       
                       {/* Bio */}
-                      <div className="mb-4">
-                        <p className="text-sm font-bold text-gray-800 mb-2 uppercase tracking-wider text-xs">{member.specialty}</p>
-                        
+                      <div className="flex-1">
                         <ExpandableText
                           text={member.bio}
-                          maxLength={MAX_BIO_LENGTH}
+                          maxLength={calculateMaxBioLength(member.approaches.length, member.specializations.length)}
                           isExpanded={expandedCards[index] || false}
                           onToggle={() => toggleExpand(index)}
                           onMouseEnter={handleMouseEnterButton}
@@ -415,16 +430,19 @@ const Team = () => {
                       
                       {/* Tags (Abordagens e Especializações) - Renderiza apenas se houver conteúdo */}
                       {(member.approaches.length > 0 || member.specializations.length > 0) && (
-                        <div className="space-y-3 mb-4">
+                        <div className="space-y-4 mb-4 mt-auto">
                           {/* Abordagens */}
                           {member.approaches.length > 0 && (
                             <div>
-                              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Abordagem</p>
-                              <div className="flex flex-wrap gap-2">
+                              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1">
+                                <span className="w-1 h-1 rounded-full bg-secondary"></span>
+                                Abordagem
+                              </p>
+                              <div className="flex flex-wrap gap-1.5">
                                 {member.approaches.map((approach, idx) => (
                                   <span 
                                     key={idx} 
-                                    className="text-[11px] font-medium bg-green-50 text-green-800 px-2.5 py-1 rounded-md border border-green-100"
+                                    className="text-[11px] font-medium bg-secondary/10 text-secondary px-2 py-1 rounded border border-secondary/20"
                                   >
                                     {approach}
                                   </span>
@@ -436,12 +454,15 @@ const Team = () => {
                           {/* Especializações */}
                           {member.specializations.length > 0 && (
                             <div>
-                              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Especialidades</p>
-                              <div className="flex flex-wrap gap-2">
+                              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1">
+                                <span className="w-1 h-1 rounded-full bg-primary"></span>
+                                Especialidades
+                              </p>
+                              <div className="flex flex-wrap gap-1.5">
                                 {member.specializations.map((spec, idx) => (
                                   <span 
                                     key={idx} 
-                                    className="text-[11px] font-medium bg-gray-50 text-gray-700 px-2.5 py-1 rounded-md border border-gray-100"
+                                    className="text-[11px] font-medium bg-gray-50 text-gray-600 px-2 py-1 rounded border border-gray-100 group-hover:border-primary/20 transition-colors"
                                   >
                                     {spec}
                                   </span>
@@ -453,10 +474,10 @@ const Team = () => {
                       )}
                       
                       {/* Botão de Ação */}
-                      <div className="mt-auto pt-3 border-t border-gray-100">
+                      <div className="mt-4 pt-4 border-t border-gray-100">
                         <a 
                           href="#contato"
-                          className="w-full flex justify-center items-center gap-2 bg-primary text-white py-2.5 px-4 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all shadow-sm hover:shadow-md transform active:scale-95"
+                          className="w-full flex justify-center items-center gap-2 bg-primary text-white py-3 px-4 rounded-xl text-sm font-bold tracking-wide hover:bg-secondary transition-all shadow-sm hover:shadow-md transform active:scale-95 duration-300"
                         >
                           Agendar Consulta
                         </a>
