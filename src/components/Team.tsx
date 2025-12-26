@@ -96,8 +96,8 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
   );
 };
 
-const BASE_BIO_LENGTH = 150;
-const EXTRA_CHARS_PER_MISSING_TAG = 60;
+const BASE_BIO_LENGTH = 280;
+const EXTRA_CHARS_PER_MISSING_TAG = 100;
 
 // Calcula o tamanho máximo da bio baseado na quantidade de tags
 const calculateMaxBioLength = (approachesCount: number, specializationsCount: number): number => {
