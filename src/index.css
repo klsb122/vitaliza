@@ -7,10 +7,42 @@
   --font-serif: 'Playfair Display', serif;
 }
 
+/* ========================================
+   Performance Optimizations
+   ======================================== */
+
+/* Smooth scrolling com performance otimizada */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Otimização global de performance */
+* {
+  /* Força aceleração de GPU para elementos animados */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 body {
   font-family: var(--font-main);
   background-color: #FAF9F6;
   color: #333333;
+  /* Otimização de renderização de texto */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Contêineres de seção - otimizados para scroll */
+section {
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+/* Imagens com carregamento otimizado */
+img {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 300px;
 }
 
 h1, h2, h3, h4 {

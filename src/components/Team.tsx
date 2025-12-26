@@ -25,6 +25,7 @@ import tamires from '../assets/team/tamires.webp';
 const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }: { src: string; alt: string; priority?: boolean; imagePosition?: 'top' | 'center' | 'bottom' }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (priority) {
@@ -36,35 +37,41 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
   }, [src, priority]);
 
   useEffect(() => {
-    if (!priority) {
+    if (!priority && containerRef.current) {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             setIsInView(true);
+            observer.disconnect(); // Desconectar após entrar na view
           }
         },
-        { rootMargin: '200px' } // Começar a carregar 200px antes de entrar na viewport
+        { 
+          rootMargin: '300px', // Aumentado para pre-carregar mais cedo
+          threshold: 0 
+        }
       );
 
-      const placeholder = document.getElementById(`img-placeholder-${alt.replace(/\s/g, '-')}`);
-      if (placeholder) {
-        observer.observe(placeholder);
-      }
+      observer.observe(containerRef.current);
 
       return () => observer.disconnect();
     }
-  }, [alt, priority]);
+  }, [priority]);
 
   return (
     <div 
-      id={`img-placeholder-${alt.replace(/\s/g, '-')}`}
+      ref={containerRef}
       className="relative w-full h-full"
+      style={{ 
+        contain: 'layout style paint',
+        transform: 'translateZ(0)' 
+      }}
     >
-      {/* Skeleton loading */}
+      {/* Skeleton loading - simplificado para melhor performance */}
       {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#8FBC8F]/30 to-[#2F4F4F]/30 animate-pulse flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-[#8FBC8F]/40 animate-pulse"></div>
-        </div>
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-[#8FBC8F]/30 to-[#2F4F4F]/30"
+          style={{ willChange: 'opacity' }}
+        />
       )}
       
       {/* Imagem real */}
@@ -74,8 +81,13 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
           alt={alt}
           loading={priority ? "eager" : "lazy"}
           decoding="async"
+          fetchPriority={priority ? "high" : "low"}
           onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${imagePosition === 'top' ? 'object-top' : imagePosition === 'bottom' ? 'object-bottom' : 'object-center'}`}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${imagePosition === 'top' ? 'object-top' : imagePosition === 'bottom' ? 'object-bottom' : 'object-center'}`}
+          style={{ 
+            transform: 'translateZ(0)',
+            willChange: isLoaded ? 'auto' : 'opacity'
+          }}
         />
       )}
     </div>
