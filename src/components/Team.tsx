@@ -96,8 +96,8 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
   );
 };
 
-const BASE_BIO_LENGTH = 200;
-const EXTRA_CHARS_PER_MISSING_TAG = 80;
+const BASE_BIO_LENGTH = 150;
+const EXTRA_CHARS_PER_MISSING_TAG = 60;
 
 // Calcula o tamanho máximo da bio baseado na quantidade de tags
 const calculateMaxBioLength = (approachesCount: number, specializationsCount: number): number => {
@@ -152,7 +152,7 @@ const ExpandableText = ({
   // Se deve mostrar texto completo, renderiza simples
   if (showFullText) {
     return (
-      <p className="text-[15px] text-gray-600 leading-relaxed">
+      <p className="text-[13px] text-gray-600 leading-relaxed">
         {text}
       </p>
     );
@@ -164,7 +164,7 @@ const ExpandableText = ({
   // Se não precisa de expansão, mostra texto completo
   if (!needsExpansion) {
     return (
-      <p className="text-[15px] text-gray-600 leading-relaxed">
+      <p className="text-[13px] text-gray-600 leading-relaxed">
         {text}
       </p>
     );
@@ -172,7 +172,7 @@ const ExpandableText = ({
 
   return (
     <>
-      <p className="text-[15px] text-gray-600 leading-relaxed">
+      <p className="text-[13px] text-gray-600 leading-relaxed">
         {isExpanded ? text : `${truncated}...`}
       </p>
       
@@ -408,15 +408,15 @@ const Team = () => {
                     </div>
                     
                     {/* Informações do Profissional */}
-                    <div className="p-6 flex-1 flex flex-col">
-                      <div className="mb-5 text-center border-b border-gray-100 pb-4">
-                        <h3 className="text-xl font-serif text-primary font-bold mb-1 group-hover:text-secondary transition-colors">{member.name}</h3>
-                        <p className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-1">{member.specialty}</p>
-                        <p className="text-xs text-secondary/80 font-medium tracking-widest">{member.crp}</p>
+                    <div className="p-4 flex-1 flex flex-col">
+                      <div className="mb-3 text-center border-b border-gray-100 pb-3">
+                        <h3 className="text-lg font-serif text-primary font-bold mb-0.5 group-hover:text-secondary transition-colors leading-tight">{member.name}</h3>
+                        <p className="text-xs font-bold text-gray-700 uppercase tracking-wide mb-0.5">{member.specialty}</p>
+                        <p className="text-[10px] text-secondary/80 font-medium tracking-widest">{member.crp}</p>
                       </div>
                       
                       {/* Bio */}
-                      <div className="flex-1">
+                      <div className="flex-1 mb-2">
                         <ExpandableText
                           text={member.bio}
                           maxLength={calculateMaxBioLength(member.approaches.length, member.specializations.length)}
@@ -430,43 +430,53 @@ const Team = () => {
                       
                       {/* Tags (Abordagens e Especializações) - Renderiza apenas se houver conteúdo */}
                       {(member.approaches.length > 0 || member.specializations.length > 0) && (
-                        <div className="space-y-4 mb-4 mt-auto">
-                          {/* Abordagens */}
+                        <div className="space-y-2 mb-3 mt-auto">
+                          {/* Abordagens - máximo 2 visíveis */}
                           {member.approaches.length > 0 && (
                             <div>
-                              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1">
+                              <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1 flex items-center gap-1">
                                 <span className="w-1 h-1 rounded-full bg-secondary"></span>
                                 Abordagem
                               </p>
-                              <div className="flex flex-wrap gap-1.5">
-                                {member.approaches.map((approach, idx) => (
+                              <div className="flex flex-wrap gap-1">
+                                {(expandedCards[index] ? member.approaches : member.approaches.slice(0, 2)).map((approach, idx) => (
                                   <span 
                                     key={idx} 
-                                    className="text-[11px] font-medium bg-secondary/10 text-secondary px-2 py-1 rounded border border-secondary/20"
+                                    className="text-[10px] font-medium bg-secondary/10 text-secondary px-1.5 py-0.5 rounded border border-secondary/20"
                                   >
                                     {approach}
                                   </span>
                                 ))}
+                                {!expandedCards[index] && member.approaches.length > 2 && (
+                                  <span className="text-[10px] font-medium text-secondary/70 px-1.5 py-0.5">
+                                    +{member.approaches.length - 2}
+                                  </span>
+                                )}
                               </div>
                             </div>
                           )}
                           
-                          {/* Especializações */}
+                          {/* Especializações - máximo 2 visíveis */}
                           {member.specializations.length > 0 && (
                             <div>
-                              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1">
+                              <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1 flex items-center gap-1">
                                 <span className="w-1 h-1 rounded-full bg-primary"></span>
                                 Especialidades
                               </p>
-                              <div className="flex flex-wrap gap-1.5">
-                                {member.specializations.map((spec, idx) => (
+                              <div className="flex flex-wrap gap-1">
+                                {(expandedCards[index] ? member.specializations : member.specializations.slice(0, 2)).map((spec, idx) => (
                                   <span 
                                     key={idx} 
-                                    className="text-[11px] font-medium bg-gray-50 text-gray-600 px-2 py-1 rounded border border-gray-100 group-hover:border-primary/20 transition-colors"
+                                    className="text-[10px] font-medium bg-gray-50 text-gray-600 px-1.5 py-0.5 rounded border border-gray-100 group-hover:border-primary/20 transition-colors"
                                   >
                                     {spec}
                                   </span>
                                 ))}
+                                {!expandedCards[index] && member.specializations.length > 2 && (
+                                  <span className="text-[10px] font-medium text-gray-400 px-1.5 py-0.5">
+                                    +{member.specializations.length - 2}
+                                  </span>
+                                )}
                               </div>
                             </div>
                           )}
@@ -474,10 +484,10 @@ const Team = () => {
                       )}
                       
                       {/* Botão de Ação */}
-                      <div className="mt-4 pt-4 border-t border-gray-100">
+                      <div className="mt-3 pt-3 border-t border-gray-100">
                         <a 
                           href="#contato"
-                          className="w-full flex justify-center items-center gap-2 bg-primary text-white py-3 px-4 rounded-xl text-sm font-bold tracking-wide hover:bg-secondary transition-all shadow-sm hover:shadow-md transform active:scale-95 duration-300"
+                          className="w-full flex justify-center items-center gap-2 bg-primary text-white py-2.5 px-4 rounded-xl text-xs font-bold tracking-wide hover:bg-secondary transition-all shadow-sm hover:shadow-md transform active:scale-95 duration-300"
                         >
                           Agendar Consulta
                         </a>
