@@ -253,7 +253,9 @@ const Contact = () => {
                       <option value="individual">Terapia Individual</option>
                       <option value="casal">Terapia de Casal</option>
                       <option value="infantil">Terapia Infantil</option>
-                      <option value="orientacao">Orientação Vocacional</option>
+                      <option value="psiquiatria">Psiquiatria</option>
+                      <option value="neuropediatria">Neuropediatria</option>
+                      <option value="avaliacoes">Avaliações Psicológicas</option>
                       <option value="outro">Outro</option>
                     </select>
                   </div>
