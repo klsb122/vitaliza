@@ -131,6 +131,34 @@ h1, h2, h3, h4 {
   transition: transform 300ms ease-out;
 }
 
+
 .group:hover .arrow-animate {
   transform: translateX(4px);
+}
+
+/* ========================================
+   Customização do Swiper (Carrossel)
+   ======================================== */
+
+/* Paginação (Dots) */
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #8FBC8F !important; /* Secondary Color */
+  opacity: 0.5 !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 24px !important;
+  border-radius: 5px !important;
+  background-color: #2F4F4F !important; /* Primary Color */
+  opacity: 1 !important;
+}
+
+/* Ajuste de padding para não cortar a sombra dos cards */
+.team-carousel-container .swiper {
+  padding-bottom: 50px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }

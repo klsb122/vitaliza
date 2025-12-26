@@ -1,7 +1,7 @@
 
-import { TbChevronDown } from 'react-icons/tb';
+import { TbChevronDown, TbChevronLeft, TbChevronRight } from 'react-icons/tb';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -332,29 +332,47 @@ const Team = () => {
         </ScrollAnimation>
         
         <ScrollAnimation direction="up" delay={0.2}>
-          <div className="team-carousel-container">
-            <Swiper
-              modules={[Pagination, Navigation, Autoplay]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 5000, disableOnInteraction: false }}
-              onSwiper={(swiper) => { swiperRef.current = swiper; }}
-              loop={true}
-              breakpoints={{
-                640: {
-                  slidesPerView: 2,
-                },
-                1024: {
-                  slidesPerView: 3,
-                },
-                1280: {
-                  slidesPerView: 4,
-                },
-              }}
-              className="!pb-20"
-            >
+            <div className="team-carousel-container relative">
+              {/* Botão Anterior */}
+              <button
+                onClick={() => swiperRef.current?.slidePrev()}
+                className="absolute top-1/2 -left-4 md:-left-6 z-20 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/20 text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:scale-110 focus:outline-none group"
+                aria-label="Anterior"
+              >
+                <TbChevronLeft className="text-2xl group-hover:-translate-x-0.5 transition-transform" />
+              </button>
+
+              {/* Botão Próximo */}
+              <button
+                onClick={() => swiperRef.current?.slideNext()}
+                className="absolute top-1/2 -right-4 md:-right-6 z-20 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/20 text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:scale-110 focus:outline-none group"
+                aria-label="Próximo"
+              >
+                <TbChevronRight className="text-2xl group-hover:translate-x-0.5 transition-transform" />
+              </button>
+
+              <Swiper
+                modules={[Pagination, Autoplay]}
+                spaceBetween={30}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                grabCursor={true}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                onSwiper={(swiper) => { swiperRef.current = swiper; }}
+                loop={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 2,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                  },
+                  1280: {
+                    slidesPerView: 4,
+                  },
+                }}
+                className="!pb-16"
+              >
               {teamMembers.map((member, index) => (
                 <SwiperSlide key={index} className="!h-auto pb-6">
                   <div 
@@ -446,8 +464,8 @@ const Team = () => {
                   </div>
                 </SwiperSlide>
               ))}
-            </Swiper>
-          </div>
+              </Swiper>
+            </div>
         </ScrollAnimation>
         
         {/* CTA Adicional */}
