@@ -22,7 +22,8 @@ import rhania from '../assets/team/rhania.webp';
 import tamires from '../assets/team/tamires.webp';
 
 // Componente de imagem otimizada com lazy loading e skeleton
-const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }: { src: string; alt: string; priority?: boolean; imagePosition?: 'top' | 'center' | 'bottom' }) => {
+// imagePosition aceita: 'top', 'center', 'bottom' ou valores CSS como '30%', '50% 20%', 'center top'
+const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }: { src: string; alt: string; priority?: boolean; imagePosition?: string }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -83,8 +84,9 @@ const OptimizedImage = ({ src, alt, priority = false, imagePosition = 'center' }
           decoding="async"
           fetchPriority={priority ? "high" : "low"}
           onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${imagePosition === 'top' ? 'object-top' : imagePosition === 'bottom' ? 'object-bottom' : 'object-center'}`}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
+            objectPosition: imagePosition,
             transform: 'translateZ(0)',
             willChange: isLoaded ? 'auto' : 'opacity'
           }}
@@ -119,7 +121,18 @@ const Team = () => {
     }));
   };
 
-  const teamMembers = [
+  interface TeamMember {
+    name: string;
+    crp: string;
+    specialty: string;
+    approaches: string[];
+    specializations: string[];
+    bio: string;
+    image: string;
+    imagePosition?: string; // Aceita: 'top', 'center', 'bottom' ou valores CSS como '30%', '50% 20%'
+  }
+
+  const teamMembers: TeamMember[] = [
     {
       name: "Samara D. Dal-Lago",
       crp: "CRP 03/19724",
@@ -127,7 +140,8 @@ const Team = () => {
       approaches: ["Terapia Cognitivo-Comportamental", "Terapia do Esquema Cognitivo"],
       specializations: ["Relacionamento e Sexualidade", "Psicologia Jurídica", "Inteligência Criminal", "Terapia Cognitivo-Comportamental", "Terapia do Esquema Cognitivo"],
       bio: "Atua auxiliando indivíduos a compreenderem seus padrões emocionais, cognitivos e comportamentais, promovendo mudanças significativas e duradouras. Atendimento on-line e presencial para adolescentes a partir de 16 anos e adultos.",
-      image: samara
+      image: samara,
+      imagePosition: "center 40%"
     },
     {
       name: "Rhuana Tondatto",
@@ -136,7 +150,8 @@ const Team = () => {
       approaches: ["Humanista Existencial", "Terapia Sistêmica"],
       specializations: ["Terapia de Casal"],
       bio: "Atua na abordagem humanista e existencial, com formação em terapia sistêmica de casal e individual. Realiza atendimento on-line e presencial para adultos e adolescentes a partir de 13 anos, com objetivo de acolher e construir juntos uma trajetória de bem-estar e autoconhecimento.",
-      image: rhuana
+      image: rhuana,
+      imagePosition: "center 35%"
     },
     {
       name: "Rhania Menezes",
@@ -145,7 +160,8 @@ const Team = () => {
       approaches: ["Terapia Cognitivo-Comportamental"],
       specializations: ["Psicopatologia", "Psicoterapias Baseadas em Evidências"],
       bio: "Atua com foco na mudança de processos cognitivos, emocionais e comportamentais. Especializada em avaliação diagnóstica de transtornos mentais. Atendimentos on-line e presenciais para adolescentes e adultos.",
-      image: rhania
+      image: rhania,
+      imagePosition: "center 35%"
     },
     {
       name: "Dr. Hercules Hideki Makio",
@@ -154,7 +170,8 @@ const Team = () => {
       approaches: [],
       specializations: [],
       bio: "Graduado pela UFMS com residência em psiquiatria. Atendimentos presenciais e online a partir de 6 anos. Valoriza o vínculo, a escuta e a empatia como princípios fundamentais, promovendo bem-estar e qualidade de vida.",
-      image: hercules
+      image: hercules,
+      imagePosition: "center 45%"
     },
     {
       name: "Lorena dos Reis Dias Lermen",
@@ -163,7 +180,8 @@ const Team = () => {
       approaches: ["Gestalt"],
       specializations: ["Perdas e Luto", "Psicologia da Saúde e Hospitalar", "Psicologia do Trânsito"],
       bio: "Formada pela Universidade Católica de Goiás. Credenciada junto à Polícia Federal. Atende adultos e idosos, presencial e on-line. Realiza avaliação psicológica (porte/posse de arma, pré-cirúrgica, vocacional, admissional e do trabalho).",
-      image: lorena
+      image: lorena,
+      imagePosition: "center 55%"
     },
     {
       name: "Anne Caroline Farias",
@@ -172,7 +190,8 @@ const Team = () => {
       approaches: ["Terapia Cognitivo-Comportamental", "Terapia do Esquema"],
       specializations: ["Neurociência do Comportamento Humano", "Terapia do Esquema"],
       bio: "Atua com foco no desenvolvimento de relações seguras e saudáveis, compreendendo as necessidades emocionais do indivíduo. Atendimento online e presencial para adolescentes e adultos, individual e casal.",
-      image: anne
+      image: anne,
+      imagePosition: "center 80%"
     },
     {
       name: "Mírcia Dantas de Sá Carneiro",
@@ -190,7 +209,8 @@ const Team = () => {
       approaches: ["Terapia Cognitivo-Comportamental"],
       specializations: ["Neuropsicologia", "Avaliação Neuropsicológica"],
       bio: "Atua em avaliações neuropsicológicas e psicoterapia. Atendimentos exclusivamente presenciais para crianças a partir de 3 anos, adolescentes, adultos e idosos. Foco em funções cognitivas como atenção, memória, linguagem, aprendizagem e regulação emocional.",
-      image: tamires
+      image: tamires,
+      imagePosition: "center 45%"
     },
     {
       name: "Anna Vitória Silva",
@@ -199,7 +219,8 @@ const Team = () => {
       approaches: ["Terapia Cognitivo-Comportamental"],
       specializations: ["Habilidades Socioemocionais", "Regulação Emocional"],
       bio: "Atua na Psicologia Infantojuvenil com base na TCC, realizando atendimento especializado para crianças e adolescentes de 3 a 14 anos. Seu trabalho é direcionado à identificação e modificação de padrões cognitivos, emocionais e comportamentais, auxiliando na construção de habilidades socioemocionais e fortalecimento da autoestima. Realiza atendimentos presenciais com intervenções baseadas em evidências.",
-      image: anna
+      image: anna,
+      imagePosition: "center 60%"
     },
     {
       name: "Isabella Magalhães",
@@ -208,7 +229,8 @@ const Team = () => {
       approaches: ["Terapia Cognitivo-Comportamental"],
       specializations: ["Psicopatologia", "Obesidade e Emagrecimento"],
       bio: "Atuação voltada para a Terapia Cognitivo-Comportamental (TCC), auxiliando você a enfrentar questões como ansiedade, autoestima e dificuldades emocionais do dia a dia. Atende pessoas que buscam apoio no processo de emagrecimento, compreendendo os aspectos emocionais que influenciam a relação com a comida e o corpo. Tem pós-graduação em Terapia Cognitivo Comportamental e em Psicopatologia, formação em Obesidade e Emagrecimento. Realiza atendimento on-line e presencial, para adolescentes a partir de 16 anos e adultos.",
-      image: isabella
+      image: isabella,
+      imagePosition: "center 60%"
     },
     {
       name: "Dra. Laís Hendges",
@@ -217,7 +239,8 @@ const Team = () => {
       approaches: [],
       specializations: ["Neurologia Infantil", "Neurodesenvolvimento", "Pediatria"],
       bio: "Formada em 2018, possui residência em Pediatria e pós-graduação em Neurologia Infantil. Atua no cuidado integral da criança e do adolescente, com foco na avaliação, diagnóstico e acompanhamento de condições neurológicas e do desenvolvimento infantil, como atrasos no desenvolvimento neuropsicomotor, transtornos do neurodesenvolvimento, epilepsia infantil e alterações do sono.",
-      image: lais
+      image: lais,
+      imagePosition: "center 60%"
     }
   ];
 
@@ -271,7 +294,7 @@ const Team = () => {
                         src={member.image} 
                         alt={member.name}
                         priority={index < 4} // Priorizar as primeiras 4 imagens
-                        imagePosition={(member as any).imagePosition}
+                        imagePosition={member.imagePosition}
                       />
                       {/* Overlay com efeito hover */}
                       <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
