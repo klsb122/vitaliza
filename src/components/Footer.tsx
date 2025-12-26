@@ -174,7 +174,7 @@ const Footer = () => {
         <div className="py-6 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm text-center md:text-left">
-              © {currentYear} Vitaliza Psicologia. Todos os direitos reservados.
+              ©2025 Vitaliza Saúde Mental. Todos os direitos reservados.
             </p>
             <p className="text-gray-500 text-sm flex items-center gap-1.5">
               Feito com <Heart className="w-4 h-4 text-red-400 fill-red-400 animate-pulse" /> por{' '}

@@ -284,7 +284,7 @@ const Team = () => {
               {teamMembers.map((member, index) => (
                 <SwiperSlide key={index} className="!h-auto">
                   <div 
-                    className={`bg-[#FAF9F6] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col ${
+                    className={`bg-[#FAF9F6] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col relative ${
                       expandedCards[index] ? 'h-auto' : 'h-[700px]'
                     }`}
                   >
@@ -301,7 +301,7 @@ const Team = () => {
                     </div>
                     
                     {/* Informações do Profissional */}
-                    <div className="p-6 flex-1 flex flex-col overflow-hidden">
+                    <div className="p-6 pb-24 flex-1 flex flex-col overflow-hidden">
                       <h3 className="text-xl font-serif text-primary mb-1">{member.name}</h3>
                       <p className="text-sm text-secondary font-medium mb-2">{member.crp}</p>
                       
@@ -359,7 +359,7 @@ const Team = () => {
                       
                       {/* Especializações */}
                       {member.specializations.length > 0 && (
-                        <div className="mb-3 flex-1 overflow-hidden">
+                        <div className="mb-3 overflow-hidden">
                           <p className="text-xs font-bold text-text mb-2">Especializações:</p>
                           <div className="flex flex-wrap gap-1.5">
                             {member.specializations.map((spec, idx) => (
@@ -375,7 +375,7 @@ const Team = () => {
                       )}
                       
                       {/* Ações */}
-                      <div className="pt-3 border-t border-gray-200 mt-auto flex-shrink-0">
+                      <div className="absolute bottom-0 left-0 w-full p-6 pt-3 bg-[#FAF9F6] border-t border-gray-100">
                         <a 
                           href="#contato"
                           className="w-full block bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent transition-all text-center"
