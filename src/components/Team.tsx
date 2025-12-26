@@ -467,9 +467,14 @@ const Team = () => {
                                   </span>
                                 ))}
                                 {!expandedCards[index] && member.approaches.length > 2 && (
-                                  <span className="text-[11px] font-semibold text-secondary/60 px-2 py-1 cursor-pointer hover:text-secondary transition-colors">
-                                    +{member.approaches.length - 2}
-                                  </span>
+                                  <button 
+                                    onClick={() => toggleExpand(index)}
+                                    onMouseEnter={handleMouseEnterButton}
+                                    onMouseLeave={handleMouseLeaveButton}
+                                    className="text-[11px] font-semibold text-secondary/60 px-2 py-1 cursor-pointer hover:text-secondary hover:bg-secondary/10 rounded-md transition-all"
+                                  >
+                                    +{member.approaches.length - 2} ver mais
+                                  </button>
                                 )}
                               </div>
                             </div>
@@ -493,9 +498,14 @@ const Team = () => {
                                   </span>
                                 ))}
                                 {!expandedCards[index] && member.specializations.length > 2 && (
-                                  <span className="text-[11px] font-semibold text-primary/50 px-2 py-1 cursor-pointer hover:text-primary/70 transition-colors">
-                                    +{member.specializations.length - 2}
-                                  </span>
+                                  <button 
+                                    onClick={() => toggleExpand(index)}
+                                    onMouseEnter={handleMouseEnterButton}
+                                    onMouseLeave={handleMouseLeaveButton}
+                                    className="text-[11px] font-semibold text-primary/50 px-2 py-1 cursor-pointer hover:text-primary/70 hover:bg-primary/10 rounded-md transition-all"
+                                  >
+                                    +{member.specializations.length - 2} ver mais
+                                  </button>
                                 )}
                               </div>
                             </div>
