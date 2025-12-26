@@ -15,7 +15,9 @@ const Contact = () => {
     individual: 'Terapia Individual',
     casal: 'Terapia de Casal',
     infantil: 'Terapia Infantil',
-    orientacao: 'Orientação Vocacional',
+    psiquiatria: 'Psiquiatria',
+    neuropediatria: 'Neuropediatria',
+    avaliacoes: 'Avaliações Psicológicas',
     outro: 'Outro'
   };
 
