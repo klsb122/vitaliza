@@ -248,12 +248,14 @@ const Team = () => {
               className="pb-12"
             >
               {teamMembers.map((member, index) => (
-                <SwiperSlide key={index} className="h-auto">
+                <SwiperSlide key={index} className="!h-auto">
                   <div 
-                    className="bg-[#FAF9F6] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group h-full flex flex-col"
+                    className={`bg-[#FAF9F6] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col ${
+                      expandedCards[index] ? 'h-auto' : 'h-[700px]'
+                    }`}
                   >
                     {/* Imagem do Profissional */}
-                    <div className="relative h-80 bg-gradient-to-br from-[#8FBC8F]/20 to-[#2F4F4F]/20 overflow-hidden shrink-0">
+                    <div className="relative h-72 bg-gradient-to-br from-[#8FBC8F]/20 to-[#2F4F4F]/20 overflow-hidden shrink-0">
                       <OptimizedImage 
                         src={member.image} 
                         alt={member.name}
@@ -265,12 +267,13 @@ const Team = () => {
                     </div>
                     
                     {/* Informações do Profissional */}
-                    <div className="p-6 flex-1 flex flex-col">
+                    <div className="p-6 flex-1 flex flex-col overflow-hidden">
                       <h3 className="text-xl font-serif text-primary mb-1">{member.name}</h3>
-                      <p className="text-sm text-secondary font-medium mb-3">{member.crp}</p>
+                      <p className="text-sm text-secondary font-medium mb-2">{member.crp}</p>
                       
-                      <div className="mb-4">
-                        <p className="text-sm font-bold text-text mb-2">{member.specialty}</p>
+                      {/* Bio */}
+                      <div className="mb-3 flex-shrink-0">
+                        <p className="text-sm font-bold text-text mb-1">{member.specialty}</p>
                         
                         {/* Bio com expansão animada */}
                         <p className="text-sm text-light-text leading-relaxed">
@@ -295,7 +298,7 @@ const Team = () => {
                             onClick={() => toggleExpand(index)}
                             onMouseEnter={handleMouseEnterButton}
                             onMouseLeave={handleMouseLeaveButton}
-                            className="expand-button inline-flex items-center gap-1.5 text-sm text-secondary font-medium hover:text-primary transition-colors mt-3 py-1.5 px-3 rounded-lg"
+                            className="expand-button inline-flex items-center gap-1.5 text-sm text-secondary font-medium hover:text-primary transition-colors mt-2 py-1 px-2 rounded-lg"
                           >
                             <span>{expandedCards[index] ? 'Ver menos' : 'Ver mais'}</span>
                             <TbChevronDown className={`chevron-icon text-base ${expandedCards[index] ? 'rotated' : ''}`} />
@@ -304,13 +307,13 @@ const Team = () => {
                       </div>
                       
                       {/* Abordagens */}
-                      <div className="mb-4">
+                      <div className="mb-3 flex-1 overflow-hidden">
                         <p className="text-xs font-bold text-text mb-2">Abordagens:</p>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5">
                           {member.approaches.map((approach, idx) => (
                             <span 
                               key={idx} 
-                              className="text-xs bg-white px-3 py-1 rounded-full text-primary border border-[#8FBC8F]/30"
+                              className="text-xs bg-white px-2.5 py-1 rounded-full text-primary border border-[#8FBC8F]/30"
                             >
                               {approach}
                             </span>
@@ -319,7 +322,7 @@ const Team = () => {
                       </div>
                       
                       {/* Ações */}
-                      <div className="pt-4 border-t border-gray-200 mt-auto">
+                      <div className="pt-3 border-t border-gray-200 mt-auto flex-shrink-0">
                         <a 
                           href="#contato"
                           className="w-full block bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent transition-all text-center"
