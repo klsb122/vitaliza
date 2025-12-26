@@ -452,22 +452,22 @@ const Team = () => {
                           {/* Abordagens - máximo 2 visíveis */}
                           {member.approaches.length > 0 && (
                             <div>
-                              <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1 flex items-center gap-1">
-                                <span className="w-1 h-1 rounded-full bg-secondary"></span>
+                              <p className="text-[10px] font-bold text-secondary/70 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
                                 Abordagem
                               </p>
-                              <div className="flex flex-wrap gap-1 transition-all duration-300">
+                              <div className="flex flex-wrap gap-1.5 transition-all duration-300">
                                 {(expandedCards[index] ? member.approaches : member.approaches.slice(0, 2)).map((approach, idx) => (
                                   <span 
                                     key={idx} 
-                                    className={`text-[10px] font-medium bg-secondary/10 text-secondary px-1.5 py-0.5 rounded border border-secondary/20 transition-all duration-300 ${idx >= 2 && expandedCards[index] ? 'animate-fade-in' : ''}`}
+                                    className={`text-[11px] font-semibold bg-secondary/15 text-secondary px-2.5 py-1 rounded-md border border-secondary/25 shadow-sm transition-all duration-300 hover:bg-secondary/20 ${idx >= 2 && expandedCards[index] ? 'animate-fade-in' : ''}`}
                                     style={idx >= 2 && expandedCards[index] ? { animationDelay: `${(idx - 2) * 50}ms` } : {}}
                                   >
                                     {approach}
                                   </span>
                                 ))}
                                 {!expandedCards[index] && member.approaches.length > 2 && (
-                                  <span className="text-[10px] font-medium text-secondary/70 px-1.5 py-0.5 cursor-pointer hover:text-secondary transition-colors">
+                                  <span className="text-[11px] font-semibold text-secondary/60 px-2 py-1 cursor-pointer hover:text-secondary transition-colors">
                                     +{member.approaches.length - 2}
                                   </span>
                                 )}
@@ -478,22 +478,22 @@ const Team = () => {
                           {/* Especializações - máximo 2 visíveis */}
                           {member.specializations.length > 0 && (
                             <div>
-                              <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1 flex items-center gap-1">
-                                <span className="w-1 h-1 rounded-full bg-primary"></span>
+                              <p className="text-[10px] font-bold text-primary/60 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                                 Especialidades
                               </p>
-                              <div className="flex flex-wrap gap-1 transition-all duration-300">
+                              <div className="flex flex-wrap gap-1.5 transition-all duration-300">
                                 {(expandedCards[index] ? member.specializations : member.specializations.slice(0, 2)).map((spec, idx) => (
                                   <span 
                                     key={idx} 
-                                    className={`text-[10px] font-medium bg-gray-50 text-gray-600 px-1.5 py-0.5 rounded border border-gray-100 group-hover:border-primary/20 transition-all duration-300 ${idx >= 2 && expandedCards[index] ? 'animate-fade-in' : ''}`}
+                                    className={`text-[11px] font-semibold bg-primary/10 text-primary/80 px-2.5 py-1 rounded-md border border-primary/20 shadow-sm transition-all duration-300 hover:bg-primary/15 group-hover:border-primary/30 ${idx >= 2 && expandedCards[index] ? 'animate-fade-in' : ''}`}
                                     style={idx >= 2 && expandedCards[index] ? { animationDelay: `${(idx - 2) * 50}ms` } : {}}
                                   >
                                     {spec}
                                   </span>
                                 ))}
                                 {!expandedCards[index] && member.specializations.length > 2 && (
-                                  <span className="text-[10px] font-medium text-gray-400 px-1.5 py-0.5 cursor-pointer hover:text-gray-600 transition-colors">
+                                  <span className="text-[11px] font-semibold text-primary/50 px-2 py-1 cursor-pointer hover:text-primary/70 transition-colors">
                                     +{member.specializations.length - 2}
                                   </span>
                                 )}
