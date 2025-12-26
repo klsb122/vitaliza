@@ -94,7 +94,7 @@ const Approaches = () => {
             const isExpanded = expandedCard === index;
             
             return (
-              <ScrollAnimation key={index} direction="up" delay={index * 0.1}>
+              <ScrollAnimation key={index} direction="up">
                 <div 
                   className={`bg-white rounded-2xl shadow-lg border border-secondary/10 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group flex flex-col ${isExpanded ? 'ring-2 ring-secondary' : ''}`}
                 >

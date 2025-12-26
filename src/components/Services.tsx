@@ -58,7 +58,6 @@ const Services = () => {
               <ScrollAnimation 
                 key={index} 
                 direction="up" 
-                delay={index * 0.1}
                 className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
               >
                 <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 border-b-4 border-transparent hover:border-secondary group h-full">
