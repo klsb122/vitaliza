@@ -245,7 +245,7 @@ const Team = () => {
       specializations: [],
       bio: "Graduado pela UFMS com residência em psiquiatria. Atendimentos presenciais e online a partir de 6 anos. Valoriza o vínculo, a escuta e a empatia como princípios fundamentais, promovendo bem-estar e qualidade de vida.",
       image: hercules,
-      imagePosition: "center 45%"
+      imagePosition: "center 40%"
     },
     {
       name: "Lorena dos Reis Dias Lermen",
@@ -255,7 +255,7 @@ const Team = () => {
       specializations: ["Perdas e Luto", "Psicologia da Saúde e Hospitalar", "Psicologia do Trânsito"],
       bio: "Formada pela Universidade Católica de Goiás. Credenciada junto à Polícia Federal. Atende adultos e idosos, presencial e on-line. Realiza avaliação psicológica (porte/posse de arma, pré-cirúrgica, vocacional, admissional e do trabalho).",
       image: lorena,
-      imagePosition: "center 55%"
+      imagePosition: "center 50%"
     },
     {
       name: "Anne Caroline Farias",
@@ -274,7 +274,8 @@ const Team = () => {
       approaches: ["Terapia Sistêmica"],
       specializations: ["Terapia de Família e Casal", "Consultoria Empresarial", "Psicologia Analítica", "Terapia EMDR", "Terapia Brainspotting"],
       bio: "Especializada em Terapia de Família e Casal. Auxilia pacientes a processar experiências traumáticas e memórias dolorosas. Atendimentos online e presencial para adultos, idosos, família, casal e grupos. Oferece Consultoria Empresarial e implementação da NR-1.",
-      image: mircia
+      image: mircia,
+      imagePosition: "center 45%"
     },
     {
       name: "Tamires Carvalho",
@@ -284,7 +285,7 @@ const Team = () => {
       specializations: ["Neuropsicologia", "Avaliação Neuropsicológica"],
       bio: "Atua em avaliações neuropsicológicas e psicoterapia. Atendimentos exclusivamente presenciais para crianças a partir de 3 anos, adolescentes, adultos e idosos. Foco em funções cognitivas como atenção, memória, linguagem, aprendizagem e regulação emocional.",
       image: tamires,
-      imagePosition: "center 45%"
+      imagePosition: "center 40%"
     },
     {
       name: "Anna Vitória Silva",
@@ -304,7 +305,7 @@ const Team = () => {
       specializations: ["Psicopatologia", "Obesidade e Emagrecimento"],
       bio: "Atuação voltada para a Terapia Cognitivo-Comportamental (TCC), auxiliando você a enfrentar questões como ansiedade, autoestima e dificuldades emocionais do dia a dia. Atende pessoas que buscam apoio no processo de emagrecimento, compreendendo os aspectos emocionais que influenciam a relação com a comida e o corpo. Tem pós-graduação em Terapia Cognitivo Comportamental e em Psicopatologia, formação em Obesidade e Emagrecimento. Realiza atendimento on-line e presencial, para adolescentes a partir de 16 anos e adultos.",
       image: isabella,
-      imagePosition: "center 60%"
+      imagePosition: "center 55%"
     },
     {
       name: "Dra. Laís Hendges",
