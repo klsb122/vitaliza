@@ -245,7 +245,7 @@ const Team = () => {
                   slidesPerView: 4,
                 },
               }}
-              className="pb-12"
+              className="!pb-20"
             >
               {teamMembers.map((member, index) => (
                 <SwiperSlide key={index} className="!h-auto">
