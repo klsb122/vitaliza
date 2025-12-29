@@ -70,8 +70,8 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       title: "Email",
-      value: "contato@vitaliza.com.br",
-      link: "mailto:contato@vitaliza.com.br"
+      value: "psi.vitaliza@gmail.com",
+      link: "mailto:psi.vitaliza@gmail.com"
     },
     {
       icon: <FaClock />,

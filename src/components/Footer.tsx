@@ -121,11 +121,11 @@ const Footer = () => {
                 <span>(77) 99930-3592</span>
               </a>
               <a 
-                href="mailto:contato@vitaliza.com.br" 
+                href="mailto:psi.vitaliza@gmail.com" 
                 className="flex items-center gap-3 text-gray-400 hover:text-secondary transition-colors text-sm group"
               >
                 <Mail className="w-5 h-5 text-secondary/70 group-hover:text-secondary transition-colors flex-shrink-0" />
-                <span>contato@vitaliza.com.br</span>
+                <span>psi.vitaliza@gmail.com</span>
               </a>
             </div>
           </div>
