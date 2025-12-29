@@ -90,7 +90,7 @@ const AboutUs = () => {
               <div className="relative max-w-lg mx-auto">
                 <img 
                   src={novaFase} 
-                  alt="Equipe Vitaliza" 
+                  alt="Samara e Rhuana - Fundadoras da Vitaliza Saúde Mental, psicólogas em Luís Eduardo Magalhães-BA" 
                   className="rounded-2xl shadow-2xl w-full object-cover"
                 />
                 {/* Decorative frame */}

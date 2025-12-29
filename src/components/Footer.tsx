@@ -42,7 +42,7 @@ const Footer = () => {
             <div className="flex items-center gap-3 mb-6">
               <img 
                 src={logoSolo} 
-                alt="Vitaliza" 
+                alt="Logo Vitaliza Saúde Mental - Clínica de Psicologia" 
                 className="h-14 w-14 object-contain drop-shadow-lg" 
               />
               <div>

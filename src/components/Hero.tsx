@@ -126,7 +126,7 @@ const Hero = () => {
           >
             <img 
               src={equipe} 
-              alt="Equipe Vitaliza" 
+              alt="Equipe de psicólogos da Vitaliza Saúde Mental em Luís Eduardo Magalhães" 
               className="w-full h-auto object-cover object-top"
               style={{ maxHeight: '60vh' }}
             />
