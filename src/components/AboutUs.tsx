@@ -1,4 +1,4 @@
-import { FaHeart, FaUsers, FaLeaf, FaStar, FaCheck } from 'react-icons/fa';
+import { FaHeart, FaUsers, FaLeaf, FaCheck, FaLock, FaLaptop, FaHandHoldingHeart } from 'react-icons/fa';
 import novaFase from '../assets/fundadoras.webp';
 import ScrollAnimation from './ScrollAnimation';
 
@@ -20,9 +20,19 @@ const AboutUs = () => {
       description: "Psicologia, Neuropsicologia, Psiquiatria e Neuropediatria"
     },
     {
-      icon: FaStar,
-      title: "Atendimento Humanizado",
-      description: "Ético, acolhedor e individualizado"
+      icon: FaLock,
+      title: "Ambiente Sigiloso e Confortável",
+      description: "Espaço privativo e acolhedor para seu bem-estar"
+    },
+    {
+      icon: FaHandHoldingHeart,
+      title: "Abordagem Humanizada",
+      description: "Cuidado ético, acolhedor e individualizado"
+    },
+    {
+      icon: FaLaptop,
+      title: "Atendimento Online e Presencial",
+      description: "Flexibilidade para atender suas necessidades"
     }
   ];
 
@@ -131,7 +141,7 @@ const AboutUs = () => {
               </div>
 
               {/* Diferenciais */}
-              <ul className="space-y-3 pt-4">
+              {/* <ul className="space-y-3 pt-4">
                 {diferenciais.map((item, index) => (
                   <li key={index} className="flex items-center gap-3 font-medium text-text">
                     <span className="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center">
@@ -140,13 +150,13 @@ const AboutUs = () => {
                     {item}
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </ScrollAnimation>
           </div>
         </div>
 
         {/* === PARTE 3: Highlights/Cards === */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
           {highlights.map((item, index) => (
             <ScrollAnimation key={index} direction="up" delay={index * 0.1}>
               <div 
