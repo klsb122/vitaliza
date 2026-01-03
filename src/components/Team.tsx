@@ -266,7 +266,7 @@ const Team = () => {
       crp: "CRP 03/30272",
       specialty: "Psicóloga Clínica",
       approaches: ["Terapia Cognitivo-Comportamental"],
-      specializations: ["Psicopatologia", "Psicoterapias Baseadas em Evidências"],
+      specializations: ["Psicopatologia", "Psicoterapias Baseadas em Evidências", "Terapia Cognitivo-Comportamental"],
       bio: "Atua com foco na mudança de processos cognitivos, emocionais e comportamentais. Especializada em avaliação diagnóstica de transtornos mentais. Atendimentos on-line e presenciais para adolescentes e adultos.",
       image: rhania,
       imagePosition: "center 35%"
