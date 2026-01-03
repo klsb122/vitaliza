@@ -1,4 +1,4 @@
-import { FaHeart, FaUsers, FaLeaf, FaCheck, FaLock, FaLaptop, FaHandHoldingHeart } from 'react-icons/fa';
+import { FaHeart, FaUsers, FaLeaf, FaLock, FaLaptop, FaHandHoldingHeart } from 'react-icons/fa';
 import novaFase from '../assets/fundadoras.webp';
 import ScrollAnimation from './ScrollAnimation';
 
@@ -43,11 +43,7 @@ const AboutUs = () => {
     { year: "Hoje", text: "12 Profissionais" }
   ];
 
-  const diferenciais = [
-    "Ambiente Sigiloso e Confortável",
-    "Atendimento Online e Presencial",
-    "Abordagem Humanizada"
-  ];
+
 
   return (
     <section id="sobre" className="py-24 bg-gradient-to-b from-[#FAF9F6] via-primary/5 to-[#FAF9F6] relative overflow-hidden">
