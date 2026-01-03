@@ -1,11 +1,11 @@
 # Robots.txt para Vitaliza Saúde Mental
-# https://vitalizapsicologia.com.br
+# https://vitalizasaudemental.com.br
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://vitalizapsicologia.com.br/sitemap.xml
+Sitemap: https://vitalizasaudemental.com.br/sitemap.xml
 
 # Bloquear diretórios de desenvolvimento
 Disallow: /node_modules/
