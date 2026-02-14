@@ -340,17 +340,17 @@ const Team = () => {
       bio: "Atuação voltada para a Terapia Cognitivo-Comportamental (TCC), auxiliando você a enfrentar questões como ansiedade, autoestima e dificuldades emocionais do dia a dia. Atende pessoas que buscam apoio no processo de emagrecimento, compreendendo os aspectos emocionais que influenciam a relação com a comida e o corpo. Tem pós-graduação em Terapia Cognitivo Comportamental e em Psicopatologia, formação em Obesidade e Emagrecimento. Realiza atendimento on-line e presencial, para adolescentes a partir de 16 anos e adultos.",
       image: isabella,
       imagePosition: "center 55%"
-    },
-    {
-      name: "Dra. Laís Hendges",
-      crp: "CRM 32638 | RQE 23413",
-      specialty: "Médica Pediatra e Neuropediatra",
-      approaches: [],
-      specializations: ["Neurologia Infantil", "Neurodesenvolvimento", "Pediatria"],
-      bio: "Formada em 2018, possui residência em Pediatria e pós-graduação em Neurologia Infantil. Atua no cuidado integral da criança e do adolescente, com foco na avaliação, diagnóstico e acompanhamento de condições neurológicas e do desenvolvimento infantil, como atrasos no desenvolvimento neuropsicomotor, transtornos do neurodesenvolvimento, epilepsia infantil e alterações do sono.",
-      image: lais,
-      imagePosition: "center 60%"
     }
+    // {
+    //   name: "Dra. Laís Hendges",
+    //   crp: "CRM 32638 | RQE 23413",
+    //   specialty: "Médica Pediatra e Neuropediatra",
+    //   approaches: [],
+    //   specializations: ["Neurologia Infantil", "Neurodesenvolvimento", "Pediatria"],
+    //   bio: "Formada em 2018, possui residência em Pediatria e pós-graduação em Neurologia Infantil. Atua no cuidado integral da criança e do adolescente, com foco na avaliação, diagnóstico e acompanhamento de condições neurológicas e do desenvolvimento infantil, como atrasos no desenvolvimento neuropsicomotor, transtornos do neurodesenvolvimento, epilepsia infantil e alterações do sono.",
+    //   image: lais,
+    //   imagePosition: "center 60%"
+    // }
   ];
 
   return (
