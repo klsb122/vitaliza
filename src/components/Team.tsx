@@ -16,7 +16,7 @@ import anna from '../assets/team/anna.webp';
 import anne from '../assets/team/anne.webp';
 import hercules from '../assets/team/hercules.webp';
 import isabella from '../assets/team/isabella.webp';
-import lais from '../assets/team/lais.webp';
+// import lais from '../assets/team/lais.webp';
 import lorena from '../assets/team/lorena.webp';
 import rhania from '../assets/team/rhania.webp';
 import tamires from '../assets/team/tamires.webp';
